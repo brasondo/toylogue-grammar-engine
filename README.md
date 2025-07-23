@@ -1,23 +1,6 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -25,9 +8,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/brasondo/toylogue-grammar-engine">
@@ -43,16 +23,13 @@
     <br />
     <br />
     <a href="https://github.com/brasondo/toylogue-grammar-engine">View Demo</a>
-    &middot;
+    ·
     <a href="https://github.com/brasondo/toylogue-grammar-engine/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
+    ·
     <a href="https://github.com/brasondo/toylogue-grammar-engine/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -70,6 +47,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#live-app-interface">Live App Interface</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -78,9 +56,6 @@
   </ol>
 </details>
 
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Toylogue][product-screenshot]](https://github.com/brasondo/toylogue-grammar-engine)
@@ -89,10 +64,7 @@ Toylogue is a modular, grammar-driven NLP engine for generating expressive, role
 It combines structured grammar (YAML) with syntactic introspection (spaCy), logical role constraints (Prolog), CFG modeling (NLTK), and optional LLM surface realization (e.g. Ollama).  
 Designed to demonstrate linguistic engineering skills for narrative design, Toylogue outputs contextualized, emotionally resonant dialogue grounded in generative syntax.
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -106,47 +78,46 @@ Designed to demonstrate linguistic engineering skills for narrative design, Toyl
 * Git
 * Optional: Ollama or OpenAI (LLM surface realization)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running:
 
 ### Prerequisites
 
 * Python 3.10+  
 * pip (Python package manager)  
-* [SWI-Prolog](https://www.swi-prolog.org/) (required for logic validation via Prolog)  
-* [Ollama](https://ollama.com/) (optional, for LLM-based surface realization)
+* [SWI-Prolog](https://www.swi-prolog.org/) (required for logic validation)  
+* [Ollama](https://ollama.com/) (optional, for LLM-based enhancement)
 
-> Python dependencies such as `pyyaml`, `spacy`, `nltk`, and `pyswip` will be installed during setup.
+> Python dependencies such as `pyyaml`, `spacy`, `nltk`, and `pyswip` are installed via `requirements.txt`.
 
 ### Installation
 
-1. Clone the repo  
-   ```sh
-   
-   git clone https://github.com/brasondo/toylogue-grammar-engine.git
-   cd toylogue-grammar-engine
-   ```
+```bash
+git clone https://github.com/brasondo/toylogue-grammar-engine.git
+cd toylogue-grammar-engine
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+```
 
-2. Set up virtual environment
-    ```sh
-    python -m venv venv
-    .\venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
+### Run the Grammar Demo
+```
+python demo.py
+```
 
+Launch the Web App
+```
+python app.py
+# Then open http://localhost:3000 in your browser
+```
 
-3. Run demo
-    ```sh
-    python demo.py
-    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -166,7 +137,7 @@ print("Raw:", structure)
 refined = surface_realize_with_ollama(structure, role="villain")
 print("Ollama:", refined)
 ```
-> Note: This example uses Ollama (`llama3`) running locally. You must install and start Ollama separately.
+> Note: This example uses Ollama (`llama3`) running locally. You must install and start Ollama separately. You may modify to use openai.ChatCompletion instead.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,6 +145,25 @@ print("Ollama:", refined)
 Sample Output:
 Raw: Hello — I'm Voidmaster and ruler of all you see.  
 Ollama: (cackling) "Yes! I am VOIDMASTER, ruler of all you see and destroyer of hope!"
+
+## Live App Interface
+
+Toylogue also includes a browser-based interface where users can:
+
+- Select toy character roles (e.g., Hero, Villain, Goofball)
+- Prompt the toy with questions or context
+- Hear role-specific expressive responses aloud
+- See animated toy images per role
+- Toggle dark mode and continue branching conversation threads
+
+To launch the app locally:
+
+```bash
+python app.py
+# Then visit http://localhost:3000
+```
+<img src="images/web-ui-preview.png" alt="Toylogue Web App" width="100%" />
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- ROADMAP -->
