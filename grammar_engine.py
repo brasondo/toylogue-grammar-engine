@@ -13,7 +13,6 @@ import json  # Grammar export
 import random
 import spacy  # NLP analysis
 from nltk import CFG, ChartParser  # Grammar modeling
-from pyswip import Prolog  # Logic engine
 import requests
 
 nlp = spacy.load("en_core_web_sm")
@@ -43,18 +42,28 @@ def recursive_generate(rules, symbol="S"):
 # ---------------- Ollama LLM Realization ---------------- #
 def surface_realize_with_ollama(structure, role=None):
     prompt = f"You are a toy character of type '{role}'. Say the following line with expressiveness:\n{structure}"
-    response = requests.post(
-        "http://localhost:11434/api/generate",
-        json={"model": "llama3", "prompt": prompt, "stream": False}
-    )
-    data = response.json()
-    if "response" not in data:
-        print("⚠️ Unexpected Ollama response:", data)
-        return "[Ollama failed]"
-    return data["response"].strip()
-
+    try:
+        response = requests.post(
+            "http://localhost:11434/api/generate",
+            json={"model": "llama3", "prompt": prompt, "stream": False},
+            timeout=10,
+        )
+        data = response.json()
+        if "response" not in data:
+            print("⚠️ Unexpected Ollama response:", data)
+            return "[Ollama failed]"
+        return data["response"].strip()
+    except requests.RequestException as exc:
+        print("⚠️ Could not reach Ollama:", exc)
+        return structure
+    
 # ---------------- Prolog Logic Constraints ---------------- #
 def is_valid_combo(role, tone):
+    try:
+        from pyswip import Prolog  # Imported here to avoid dependency unless used (Logic Engine)
+    except Exception as exc:  # noqa: BLE001
+        print("⚠️ Prolog not available:", exc)
+        return False
     prolog = Prolog()
     prolog.assertz("valid(hero, brave)")
     prolog.assertz("valid(villain, angry)")
@@ -79,3 +88,50 @@ def demo_cfg_parser():
     """)
     parser = ChartParser(grammar)
     return [tree for tree in parser.parse(['Lena', 'feels', 'furious'])]
+
+# ---------------- High-Level Generation API ---------------- #
+def generate_line(role="hero", context=None, use_llm=False, rules_path='data/phrases.yaml'):
+    """Generate a single line for a role and optional context.
+
+    Parameters
+    ----------
+    role : str
+        Character archetype such as "hero" or "villain".
+    context : str, optional
+        Event context like "picked_up" or "hugged" used to prefix the line.
+    use_llm : bool, default False
+        If True, pass the result through Ollama for expressive realization.
+    rules_path : str
+        YAML path for grammar rules.
+    """
+
+    rules = load_grammar_yaml(rules_path)
+    symbol = f"S_{role.upper()}"
+    line = recursive_generate(rules, symbol=symbol)
+
+    event_prefixes = {
+        "picked_up": [
+            "Up we go!",
+            "Whoa! Thanks for picking me up!",
+            "Adventure time!",
+        ],
+        "hugged": [
+            "Aww, hugs make me stronger!",
+            "So cozy!",
+            "You're the best hugger!",
+        ],
+        "smile_detected": [
+            "I see that smile!",
+            "Your smile is contagious!",
+            "Happy vibes activated!",
+        ],
+    }
+
+    if context in event_prefixes:
+        prefix = random.choice(event_prefixes[context])
+        line = f"{prefix} {line}"
+
+    if use_llm:
+        line = surface_realize_with_ollama(line, role=role)
+
+    return line
