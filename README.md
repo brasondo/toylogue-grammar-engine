@@ -119,9 +119,12 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* Python 3.10+
-* pip (Python package manager)
+* Python 3.10+  
+* pip (Python package manager)  
+* [SWI-Prolog](https://www.swi-prolog.org/) (required for logic validation via Prolog)  
+* [Ollama](https://ollama.com/) (optional, for LLM-based surface realization)
 
+> Python dependencies such as `pyyaml`, `spacy`, `nltk`, and `pyswip` will be installed during setup.
 
 ### Installation
 
