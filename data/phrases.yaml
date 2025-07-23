@@ -1,111 +1,153 @@
 rules:
-  - lhs: S
-    rhs: [GREETING, PUNCT, NAME, COPULA_V, EMOTION_ADJP]
+  # Entry points for each character type
+  - lhs: S_HERO
+    rhs: [GREETING, PUNCT, INTRO_HERO]
+  - lhs: S_VILLAIN
+    rhs: [GREETING, PUNCT, INTRO_VILLAIN]
+  - lhs: S_GOOFBALL
+    rhs: [GREETING, PUNCT, INTRO_GOOFBALL]
+  - lhs: S_MENTOR
+    rhs: [GREETING, PUNCT, INTRO_MENTOR]
+  - lhs: S_REBEL
+    rhs: [GREETING, PUNCT, INTRO_REBEL]
+  - lhs: S_ROYALTY
+    rhs: [GREETING, PUNCT, INTRO_ROYALTY]
 
+  # Intro patterns: I am NAME TAG and CLAIM
+  - lhs: INTRO_HERO
+    rhs: [SELF_REF, NAME_HERO, ROLE_TAG_HERO, "and", CLAIM_HERO]
+  - lhs: INTRO_VILLAIN
+    rhs: [SELF_REF, NAME_VILLAIN, ROLE_TAG_VILLAIN, "and", CLAIM_VILLAIN]
+  - lhs: INTRO_GOOFBALL
+    rhs: [SELF_REF, NAME_GOOFBALL, ROLE_TAG_GOOFBALL, "and", CLAIM_GOOFBALL]
+  - lhs: INTRO_MENTOR
+    rhs: [SELF_REF, NAME_MENTOR, ROLE_TAG_MENTOR, "and", CLAIM_MENTOR]
+  - lhs: INTRO_REBEL
+    rhs: [SELF_REF, NAME_REBEL, ROLE_TAG_REBEL, "and", CLAIM_REBEL]
+  - lhs: INTRO_ROYALTY
+    rhs: [SELF_REF, NAME_ROYALTY, ROLE_TAG_ROYALTY, "and", CLAIM_ROYALTY]
+
+  # Shared symbols
   - lhs: GREETING
     rhs:
-      [
-        "Hi",
-        "Hello",
-        "Hey",
-        "What's up",
-        "How are you",
-        "Good day",
-        "Greetings",
-        "Howdy",
-        "Good morning",
-        "Good afternoon",
-        "Good evening",
-        "Nice to see you",
-        "Long time no see",
-        "Welcome back",
-      ]
+      ["Hi", "Hello", "Good evening", "Greetings", "Hey there", "Salutations"]
 
   - lhs: PUNCT
     rhs: [".", ",", "—"]
 
-  - lhs: NAME
+  - lhs: SELF_REF
+    rhs: ["I'm", "I am"]
+
+  # Character names per role
+  - lhs: NAME_HERO
+    rhs: ["Lightning McQueen", "Princess Starfire", "Captain Boom"]
+  - lhs: NAME_VILLAIN
+    rhs: ["The Overlord", "King Blarg", "Dr. Dread", "Voidmaster"]
+  - lhs: NAME_GOOFBALL
     rhs:
       [
-        "Jonathan",
-        "Brason",
-        "Anthony",
-        "Olivia",
-        "Tammy",
-        "Alin",
-        "Madeline",
-        "Stefan",
-        "Andrew",
-        "Kaitlyn",
-        "Khulan",
-        "Madison",
-        "Hunter",
-        "Aiden",
-        "Liam",
-        "Emma",
-        "Sophia",
-        "Isabella",
-        "Mia",
+        "Whiskers the Wizard",
+        "Professor Pancake",
+        "Captain Noodle",
+        "Bongo the Clown",
+      ]
+  - lhs: NAME_MENTOR
+    rhs: ["Sage Orion", "Master Lin", "Elder Whisper", "The Silent One"]
+  - lhs: NAME_REBEL
+    rhs: ["Shadowbot-9", "Blaze Vortex", "Nova Strike", "Rogue Ember"]
+  - lhs: NAME_ROYALTY
+    rhs: ["Queen Aurelia", "Lord Verdane", "Empress Vega", "Duke Ironhelm"]
+
+  # Role tags (optional titles or descriptions)
+  - lhs: ROLE_TAG_HERO
+    rhs:
+      [
+        "",
+        " the fastest racecar alive",
+        " defender of dreams",
+        " protector of the innocent",
+      ]
+  - lhs: ROLE_TAG_VILLAIN
+    rhs:
+      [
+        "",
+        " overlord of this city",
+        " your worst nightmare",
+        " ruler of shadows",
+      ]
+  - lhs: ROLE_TAG_GOOFBALL
+    rhs:
+      [
+        "",
+        " bringer of chaos sprinkles",
+        " enemy of boredom",
+        " jester of jellybeans",
+      ]
+  - lhs: ROLE_TAG_MENTOR
+    rhs:
+      [
+        "",
+        " guide of the lost",
+        " voice of the ancients",
+        " watcher of the stars",
+      ]
+  - lhs: ROLE_TAG_REBEL
+    rhs:
+      ["", " outlaw of the grid", " spark in the system", " breaker of chains"]
+  - lhs: ROLE_TAG_ROYALTY
+    rhs:
+      [
+        "",
+        " ruler of this land",
+        " heir to the throne eternal",
+        " sovereign of the realm",
       ]
 
-  - lhs: COPULA_V
+  # Claims per character role
+  - lhs: CLAIM_HERO
     rhs:
-      [
-        "is",
-        "feels",
-        "seems",
-        "looks",
-        "sounds",
-        "appears",
-        "gets",
-        "becomes",
-        "remains",
-        "stays",
-      ]
+      - "here to protect the innocent"
+      - "ready to save the day"
+      - "powered by courage"
+      - "defender of the realm"
+      - "the fastest there ever was"
 
-  - lhs: EMOTION_ADJP
+  - lhs: CLAIM_VILLAIN
     rhs:
-      [
-        "happy",
-        "sad",
-        "excited",
-        "confused",
-        "bored",
-        "relaxed",
-        "nervous",
-        "anxious",
-        "calm",
-        "angry",
-        "frustrated",
-        "disappointed",
-        "satisfied",
-        "content",
-        "pleased",
-        "grateful",
-        "thankful",
-        "hopeful",
-        "optimistic",
-        "pessimistic",
-        "fearful",
-        "scared",
-        "terrified",
-        "shocked",
-        "surprised",
-        "amazed",
-        "confident",
-        "proud",
-        "ashamed",
-        "guilty",
-        "nostalgic",
-        "melancholic",
-        "depressed",
-        "discouraged",
-        "tired",
-        "energized",
-        "motivated",
-        "inspired",
-        "worried",
-        "furious",
-        "joyful",
-        "serene",
-      ]
+      - "the one you fear most"
+      - "overlord of this city"
+      - "your doom made flesh"
+      - "bringer of chaos"
+      - "ruler of all you see"
+
+  - lhs: CLAIM_GOOFBALL
+    rhs:
+      - "coming to steal your cookies"
+      - "so shiny I blind my enemies"
+      - "armed with a rubber chicken"
+      - "here to juggle flaming muffins"
+      - "ready to prank the king"
+
+  - lhs: CLAIM_MENTOR
+    rhs:
+      - "here to light your path"
+      - "keeper of the ancient ways"
+      - "speaker of forgotten truths"
+      - "one with the stars"
+      - "guardian of wisdom"
+
+  - lhs: CLAIM_REBEL
+    rhs:
+      - "not here to follow rules"
+      - "born to break boundaries"
+      - "on fire and unstoppable"
+      - "faster than the system can track"
+      - "freedom is my only cause"
+
+  - lhs: CLAIM_ROYALTY
+    rhs:
+      - "commander of legions"
+      - "the law made flesh"
+      - "sovereign of this domain"
+      - "your rightful ruler"
+      - "keeper of the royal flame"

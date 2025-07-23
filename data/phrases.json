@@ -5,9 +5,30 @@
       "rhs": [
         "GREETING",
         "PUNCT",
+        "INTRO"
+      ]
+    },
+    {
+      "lhs": "INTRO",
+      "rhs": [
+        "IDENTITY",
+        "and",
+        "ASSERTION"
+      ]
+    },
+    {
+      "lhs": "IDENTITY",
+      "rhs": [
+        "SELF_REF",
         "NAME",
-        "COPULA_V",
-        "EMOTION_ADJP"
+        "ROLE_TAG"
+      ]
+    },
+    {
+      "lhs": "ASSERTION",
+      "rhs": [
+        "CLAIM_INTRO",
+        "CHARACTER_CLAIM"
       ]
     },
     {
@@ -15,18 +36,10 @@
       "rhs": [
         "Hi",
         "Hello",
-        "Hey",
-        "What's up",
-        "How are you",
-        "Good day",
-        "Greetings",
-        "Howdy",
-        "Good morning",
-        "Good afternoon",
         "Good evening",
-        "Nice to see you",
-        "Long time no see",
-        "Welcome back"
+        "Greetings",
+        "Hey there",
+        "Salutations"
       ]
     },
     {
@@ -34,93 +47,64 @@
       "rhs": [
         ".",
         ",",
-        "\u00e2\u20ac\u201d"
+        "-",
+        "!",
+        "?"
+      ]
+    },
+    {
+      "lhs": "SELF_REF",
+      "rhs": [
+        "I'm",
+        "I am"
       ]
     },
     {
       "lhs": "NAME",
       "rhs": [
-        "Jonathan",
-        "Brason",
-        "Anthony",
-        "Olivia",
-        "Tammy",
-        "Alin",
-        "Madeline",
-        "Stefan",
-        "Andrew",
-        "Kaitlyn",
-        "Khulan",
-        "Madison",
-        "Hunter",
-        "Aiden",
-        "Liam",
-        "Emma",
-        "Sophia",
-        "Isabella",
-        "Mia"
+        "Lightning McQueen",
+        "The Overlord",
+        "Princess Starfire",
+        "Captain Boom",
+        "Whiskers the Wizard",
+        "King Blarg",
+        "Shadowbot-9",
+        "Professor Pancake"
       ]
     },
     {
-      "lhs": "COPULA_V",
+      "lhs": "ROLE_TAG",
       "rhs": [
-        "is",
-        "feels",
-        "seems",
-        "looks",
-        "sounds",
-        "appears",
-        "gets",
-        "becomes",
-        "remains",
-        "stays"
+        "",
+        " the fastest racecar alive",
+        " ruler of this land",
+        " your worst nightmare",
+        " defender of dreams",
+        " overlord of this city",
+        " champion of the arena"
       ]
     },
     {
-      "lhs": "EMOTION_ADJP",
+      "lhs": "CLAIM_INTRO",
       "rhs": [
-        "happy",
-        "sad",
-        "excited",
-        "confused",
-        "bored",
-        "relaxed",
-        "nervous",
-        "anxious",
-        "calm",
-        "angry",
-        "frustrated",
-        "disappointed",
-        "satisfied",
-        "content",
-        "pleased",
-        "grateful",
-        "thankful",
-        "hopeful",
-        "optimistic",
-        "pessimistic",
-        "fearful",
-        "scared",
-        "terrified",
-        "shocked",
-        "surprised",
-        "amazed",
-        "confident",
-        "proud",
-        "ashamed",
-        "guilty",
-        "nostalgic",
-        "melancholic",
-        "depressed",
-        "discouraged",
-        "tired",
-        "energized",
-        "motivated",
-        "inspired",
-        "worried",
-        "furious",
-        "joyful",
-        "serene"
+        "and",
+        "because",
+        "since",
+        "as you know",
+        "for I am"
+      ]
+    },
+    {
+      "lhs": "CHARACTER_CLAIM",
+      "rhs": [
+        "the fastest there ever was",
+        "the one you fear most",
+        "destined to win every battle",
+        "powered by pure imagination",
+        "coming to steal your cookies",
+        "ready to rule the night",
+        "trained in every martial art",
+        "so shiny I blind my enemies"
       ]
     }
   ]
