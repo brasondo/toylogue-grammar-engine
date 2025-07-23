@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+=======
+flask
+>>>>>>> f607e39 (Toylogue v5.0 - Working Replit Launch with Clean UI)
 pyyaml
 spacy
 nltk
 pyswip
+<<<<<<< HEAD
 requests
+=======
+requests
+>>>>>>> f607e39 (Toylogue v5.0 - Working Replit Launch with Clean UI)
