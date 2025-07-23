@@ -1,30 +1,111 @@
 rules:
-  - id: greet_happy
-    structure: "[GREETING], [NAME]!, I'm so [EMOTION] to see you."
-    constraints:
-      role: [sidekick, friend]
-      tone: [happy]
+  - lhs: S
+    rhs: [GREETING, PUNCT, NAME, COPULA_V, EMOTION_ADJP]
 
-  - id: greet_sad
-    structure: "Hey [NAME], it's okay to feel [EMOTION]. I'm here for you."
-    constraints:
-      role: [mentor, parent]
-      tone: [sad]
+  - lhs: GREETING
+    rhs:
+      [
+        "Hi",
+        "Hello",
+        "Hey",
+        "What's up",
+        "How are you",
+        "Good day",
+        "Greetings",
+        "Howdy",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "Nice to see you",
+        "Long time no see",
+        "Welcome back",
+      ]
 
-  - id: warn_angry
-    structure: "[NAME], this is your last chance. Don't make me [VERB]!"
-    constraints:
-      role: [villain, authority]
-      tone: [angry]
+  - lhs: PUNCT
+    rhs: [".", ",", "—"]
 
-  - id: encourage_nervous
-    structure: "[NAME], I know you're feeling [EMOTION], but I believe in you. You can do this!"
-    constraints:
-      role: [coach, sibling]
-      tone: [supportive]
+  - lhs: NAME
+    rhs:
+      [
+        "Jonathan",
+        "Brason",
+        "Anthony",
+        "Olivia",
+        "Tammy",
+        "Alin",
+        "Madeline",
+        "Stefan",
+        "Andrew",
+        "Kaitlyn",
+        "Khulan",
+        "Madison",
+        "Hunter",
+        "Aiden",
+        "Liam",
+        "Emma",
+        "Sophia",
+        "Isabella",
+        "Mia",
+      ]
 
-  - id: celebrate_success
-    structure: "[EXCLAMATION]! [NAME], you did it! That was [EMOTION] to watch!"
-    constraints:
-      role: [friend, mentor]
-      tone: [excited]
+  - lhs: COPULA_V
+    rhs:
+      [
+        "is",
+        "feels",
+        "seems",
+        "looks",
+        "sounds",
+        "appears",
+        "gets",
+        "becomes",
+        "remains",
+        "stays",
+      ]
+
+  - lhs: EMOTION_ADJP
+    rhs:
+      [
+        "happy",
+        "sad",
+        "excited",
+        "confused",
+        "bored",
+        "relaxed",
+        "nervous",
+        "anxious",
+        "calm",
+        "angry",
+        "frustrated",
+        "disappointed",
+        "satisfied",
+        "content",
+        "pleased",
+        "grateful",
+        "thankful",
+        "hopeful",
+        "optimistic",
+        "pessimistic",
+        "fearful",
+        "scared",
+        "terrified",
+        "shocked",
+        "surprised",
+        "amazed",
+        "confident",
+        "proud",
+        "ashamed",
+        "guilty",
+        "nostalgic",
+        "melancholic",
+        "depressed",
+        "discouraged",
+        "tired",
+        "energized",
+        "motivated",
+        "inspired",
+        "worried",
+        "furious",
+        "joyful",
+        "serene",
+      ]

@@ -15,11 +15,16 @@ from grammar_engine import (
     analyze_with_spacy,         # ✅ spaCy (NLP)
     demo_cfg_parser,            # ✅ NLTK
     is_valid_combo,             # ✅ Prolog
-    export_grammar_to_json      # ✅ JSON
+    export_grammar_to_json,     # ✅ JSON
+    recursive_generate
 )
 
 # Load rules from YAML file (structured grammar)
 rules = load_grammar_yaml()  # ✅ YAML
+generated = recursive_generate(rules, "S") # ✅ Recursive phrase generation
+for _ in range(5):
+    phrase = recursive_generate(rules, symbol="S")
+    print("→", phrase) # ✅ Prototype recursive generation
 
 # Generate a phrase using structured constraints (role/tone/emotion)
 phrase = generate_phrase(

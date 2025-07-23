@@ -16,6 +16,7 @@ import random
 import spacy  # ✅ spaCy (NLP)
 from nltk import CFG, ChartParser  # ✅ NLTK
 from pyswip import Prolog  # ✅ Prolog
+import openai
 
 nlp = spacy.load("en_core_web_sm")  # ✅ Natural language processing engine initialized
 
@@ -110,3 +111,22 @@ def append_missing_rule(filepath, role, tone, emotion):
         yaml.dump(data, file, sort_keys=False, allow_unicode=True)  # ✅ YAML write
 
     return True
+
+# ---------------- Recursive Phrase Generation ---------------- 
+def recursive_generate(rules, symbol="S"):
+    """Recursively expand a symbol using grammar rules."""
+    candidates = [r for r in rules if r["lhs"] == symbol]
+
+    if not candidates:
+        return symbol  # Treat unknown symbols as literals (safe fallback)
+
+    # Pick one matching rule at random
+    rule = random.choice(candidates)
+    rhs = rule["rhs"]
+
+    # Case 1: If this rule is a flat terminal list (like GREETING), pick one
+    if symbol.isupper() and all(isinstance(t, str) and t not in [r["lhs"] for r in rules] for t in rhs):
+        return random.choice(rhs)
+
+    # Case 2: It's a sequence of other symbols (like [GREETING, NAME])
+    return " ".join(recursive_generate(rules, token) for token in rhs)
