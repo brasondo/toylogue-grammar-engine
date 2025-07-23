@@ -1,0 +1,30 @@
+rules:
+  - id: greet_happy
+    structure: "[GREETING], [NAME]!, I'm so [EMOTION] to see you."
+    constraints:
+      role: [sidekick, friend]
+      tone: [happy]
+
+  - id: greet_sad
+    structure: "Hey [NAME], it's okay to feel [EMOTION]. I'm here for you."
+    constraints:
+      role: [mentor, parent]
+      tone: [sad]
+
+  - id: warn_angry
+    structure: "[NAME], this is your last chance. Don't make me [VERB]!"
+    constraints:
+      role: [villain, authority]
+      tone: [angry]
+
+  - id: encourage_nervous
+    structure: "[NAME], I know you're feeling [EMOTION], but I believe in you. You can do this!"
+    constraints:
+      role: [coach, sibling]
+      tone: [supportive]
+
+  - id: celebrate_success
+    structure: "[EXCLAMATION]! [NAME], you did it! That was [EMOTION] to watch!"
+    constraints:
+      role: [friend, mentor]
+      tone: [excited]
