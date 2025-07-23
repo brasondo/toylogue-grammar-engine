@@ -156,21 +156,6 @@ To get a local copy up and running follow these simple example steps.
 
 The grammar engine loads rules from `phrases.yaml`, recursively generates symbolic phrases, and can optionally enhance them using an LLM for expressive surface realization.
 
-### Rule-Based Generation
-
-```python
-generate_phrase(
-    rules,
-    role="mentor",
-    tone="sad",
-    name="Jamie",
-    emotion="worried"
-)
-```
-
-Sample Output
-"Hey Jamie, it's okay to feel worried. I'm here for you."
-
 ### Role-Based Example with LLM Realization
 
 ```python
@@ -186,7 +171,7 @@ print("Ollama:", refined)
 
 
 Sample Output:
-Raw: Hello — I'm Voidmaster and ruler of all you see.
+Raw: Hello — I'm Voidmaster and ruler of all you see.  
 Ollama: (cackling) "Yes! I am VOIDMASTER, ruler of all you see and destroyer of hope!"
 
 
@@ -245,7 +230,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Brason Dobson - braleee@outlook.com
+Brason Dobson - braleee@outlook.com 
+🔗 [LinkedIn](https://linkedin.com/in/brasondo)
+
 
 Project Link: [https://github.com/brasondo/toylogue-grammar-engine](https://github.com/brasondo/toylogue-grammar-engine)
 
