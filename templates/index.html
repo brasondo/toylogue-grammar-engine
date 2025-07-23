@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Toylogue: Talk to a Toy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(145deg, #fefefe, #e8f4ff);
+            color: #222;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4a90e2;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        select,
+        button,
+        input[type="checkbox"] {
+            font-size: 1rem;
+            padding: 0.6rem;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            margin: 0.5rem;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        .response-bubble {
+            margin-top: 2rem;
+            background: #f0f9ff;
+            border-left: 6px solid #4a90e2;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            max-width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .expressive {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧸 Toylogue: Talk to a Toy</h1>
+
+    <div class="card">
+        <!-- Role selector -->
+        <label for="role">Choose a Role:</label>
+        <select id="role">
+            <option value="hero">🦸 Hero</option>
+            <option value="villain">😈 Villain</option>
+            <option value="mentor">🧙 Mentor</option>
+            <option value="goofball">🤪 Goofball</option>
+            <option value="rebel">🎸 Rebel</option>
+            <option value="royalty">👑 Royalty</option>
+        </select>
+
+        <!-- Context selector -->
+        <label for="context">Context:</label>
+        <select id="context">
+            <option value="">None</option>
+            <option value="picked_up">Picked Up</option>
+            <option value="hugged">Hugged</option>
+            <option value="smile_detected">Smile Detected</option>
+        </select>
+
+        <!-- Expressiveness toggle -->
+        <div class="expressive">
+            <label>
+                <input type="checkbox" id="use_llm" checked />
+                ✨ Use Expressiveness (LLM)
+            </label>
+        </div>
+
+        <button onclick="generate()">🗣️ Speak!</button>
+
+        <!-- 👾 Avatar display -->
+        <h2 id="avatar" style="font-size: 3rem; margin-top: 1rem;">🧸</h2>
+
+        <!-- 💬 Response bubble -->
+        <div id="response" class="response-bubble" style="display: none;"></div>
+    </div>
+
+
+    <script>
+        const avatarMap = {
+            hero: "🦸",
+            villain: "😈",
+            mentor: "🧙",
+            goofball: "🤪",
+            rebel: "🎸",
+            royalty: "👑"
+        };
+
+        // Typing effect function
+        function typeText(text, element) {
+            element.innerText = "";
+            const words = text.split(/(\s+)/); // Split by space and preserve spacing
+            let i = 0;
+
+            function nextWord() {
+                if (i >= words.length) return;
+
+                element.innerText += words[i];
+                i++;
+
+                setTimeout(nextWord, 60);
+            }
+
+            nextWord();
+        }
+
+        // 🚀 Generates dialogue on click
+        async function generate() {
+            const role = document.getElementById("role").value;
+            const context = document.getElementById("context").value;
+            const use_llm = document.getElementById("use_llm").checked;
+
+            // 🎭 Update avatar emoji
+            document.getElementById("avatar").innerText = avatarMap[role] || "🧸";
+            try {
+                const res = await fetch("/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ role, context, use_llm }),
+                });
+
+                const data = await res.json();
+                const responseEl = document.getElementById("response");
+                responseEl.style.display = "block";
+
+                // 💬 Use typing animation
+                typeText(data.response, responseEl);
+
+                // 🔊 Speak out loud
+                // 🧼 Strip out actions like *waves* before speaking
+                const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                speechSynthesis.speak(utterance);
+
+                speechSynthesis.speak(utterance);
+            } catch (err) {
+                console.error("❌ Error calling /generate:", err);
+                alert("Something went wrong!");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
