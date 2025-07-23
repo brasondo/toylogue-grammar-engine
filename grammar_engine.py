@@ -11,21 +11,33 @@
 import yaml  # Grammar loading
 import json  # Grammar export
 import random
-import spacy  # NLP analysis
 from nltk import CFG, ChartParser  # Grammar modeling
 import requests
 
-nlp = spacy.load("en_core_web_sm")
+import spacy  # NLP analysis
+import subprocess
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # Fallback: shell out to download spaCy model
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"],
+                   check=True)
+    nlp = spacy.load("en_core_web_sm")
+
 
 # ---------------- Load + Export Grammar ---------------- #
 def load_grammar_yaml(path='data/phrases.yaml'):
     with open(path, 'r') as file:
         return yaml.safe_load(file)['rules']
 
-def export_grammar_to_json(yaml_path='data/phrases.yaml', json_path='data/phrases.json'):
+
+def export_grammar_to_json(yaml_path='data/phrases.yaml',
+                           json_path='data/phrases.json'):
     rules = load_grammar_yaml(yaml_path)
     with open(json_path, 'w') as file:
         json.dump({'rules': rules}, file, indent=2)
+
 
 # ---------------- Recursive Rule Expansion ---------------- #
 def recursive_generate(rules, symbol="S"):
@@ -39,13 +51,18 @@ def recursive_generate(rules, symbol="S"):
         return random.choice(rhs)
     return " ".join(recursive_generate(rules, t) for t in rhs)
 
+
 # ---------------- Ollama LLM Realization ---------------- #
 def surface_realize_with_ollama(structure, role=None):
     prompt = f"You are a toy character of type '{role}'. Say the following line with expressiveness:\n{structure}"
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
-            json={"model": "llama3", "prompt": prompt, "stream": False},
+            json={
+                "model": "llama3",
+                "prompt": prompt,
+                "stream": False
+            },
             timeout=10,
         )
         data = response.json()
@@ -56,7 +73,8 @@ def surface_realize_with_ollama(structure, role=None):
     except requests.RequestException as exc:
         print("⚠️ Could not reach Ollama:", exc)
         return structure
-    
+
+
 # ---------------- Prolog Logic Constraints ---------------- #
 def is_valid_combo(role, tone):
     try:
@@ -72,10 +90,12 @@ def is_valid_combo(role, tone):
     result = list(prolog.query(f"valid({role}, {tone})"))
     return bool(result)
 
+
 # ---------------- spaCy Syntax Analysis ---------------- #
 def analyze_with_spacy(text):
     doc = nlp(text)
     return [(t.text, t.pos_, t.dep_) for t in doc]
+
 
 # ---------------- NLTK Grammar Tree Demo ---------------- #
 def demo_cfg_parser():
@@ -89,8 +109,12 @@ def demo_cfg_parser():
     parser = ChartParser(grammar)
     return [tree for tree in parser.parse(['Lena', 'feels', 'furious'])]
 
+
 # ---------------- High-Level Generation API ---------------- #
-def generate_line(role="hero", context=None, use_llm=False, rules_path='data/phrases.yaml'):
+def generate_line(role="hero",
+                  context=None,
+                  use_llm=False,
+                  rules_path='data/phrases.yaml'):
     """Generate a single line for a role and optional context.
 
     Parameters
