@@ -85,7 +85,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Toylogue is a modular, constraint-driven grammar engine designed to generate expressive, role-aware dialogue for toys, characters, and narrative systems. Built with YAML, Python, and linguistic constraint logic, Toylogue outputs tone- and context-sensitive phrases that adapt to speaker roles and emotional scenarios.
+Toylogue is a modular, grammar-driven NLP engine for generating expressive, role-specific dialogue for toys, characters, and games.  
+It combines structured grammar (YAML) with syntactic introspection (spaCy), logical role constraints (Prolog), CFG modeling (NLTK), and optional LLM surface realization (e.g. Ollama).  
+Designed to demonstrate linguistic engineering skills for narrative design, Toylogue outputs contextualized, emotionally resonant dialogue grounded in generative syntax.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,10 +97,15 @@ Toylogue is a modular, constraint-driven grammar engine designed to generate exp
 ### Built With
 
 * Python 3.12+
-* YAML
+* YAML (grammar definition)
+* JSON (grammar export)
+* spaCy (syntactic analysis)
+* NLTK (generative grammar modeling)
+* Prolog (role-tone logic validation)
 * Visual Studio Code
 * Git
-* Optional: spaCy, NLTK (planned)
+* Optional: Ollama or OpenAI (LLM surface realization)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,9 +150,9 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The grammar engine loads rules from `phrases.yaml` and generates role-based output using `generate_phrase()`.
+The grammar engine loads rules from `phrases.yaml`, recursively generates symbolic phrases, and can optionally enhance them using an LLM for expressive surface realization.
 
-### Example
+### Rule-Based Generation
 
 ```python
 generate_phrase(
@@ -159,17 +167,37 @@ generate_phrase(
 Sample Output
 "Hey Jamie, it's okay to feel worried. I'm here for you."
 
+### Role-Based Example with LLM Realization
+
+```python
+structure = recursive_generate(rules, symbol="S_VILLAIN")
+print("Raw:", structure)
+
+refined = surface_realize_with_ollama(structure, role="villain")
+print("Ollama:", refined)
+```
+> Note: This example uses Ollama (`llama3`) running locally. You must install and start Ollama separately.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+Sample Output:
+Raw: Hello — I'm Voidmaster and ruler of all you see.
+Ollama: (cackling) "Yes! I am VOIDMASTER, ruler of all you see and destroyer of hope!"
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Modular grammar engine using YAML rules
+- [x] Role- and tone-aware dialogue construction
+- [x] Recursive grammar expansion via `S -> NP VP`-style rules
+- [x] Prolog logic for tone-role constraint validation
+- [x] NLTK CFG tree generation (generative syntax demo)
+- [x] spaCy POS + dependency introspection
+- [x] LLM-based expressive surface realization via Ollama
+- [ ] Interactive authoring tool for character grammars
+- [ ] Dialogue chaining with context persistence
 
 See the [open issues](https://github.com/brasondo/toylogue-grammar-engine/issues) for a full list of proposed features (and known issues).
 
