@@ -5,10 +5,28 @@
     <meta charset="UTF-8">
     <title>Toylogue: Talk to a Toy</title>
     <style>
+        :root {
+            --bg: linear-gradient(145deg, #fefefe, #e8f4ff);
+            --card-bg: white;
+            --text: #222;
+            --bubble-bg: #f0f9ff;
+            --bubble-border: #4a90e2;
+            --accent: #4a90e2;
+        }
+
+        body.dark {
+            --bg: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            --card-bg: #2b2b2b;
+            --text: #eee;
+            --bubble-bg: #333;
+            --bubble-border: #4a90e2;
+            --accent: #4a90e2;
+        }
+
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(145deg, #fefefe, #e8f4ff);
-            color: #222;
+            background: var(--bg);
+            color: var(--text);
             margin: 0;
             padding: 2rem;
             display: flex;
@@ -16,14 +34,8 @@
             align-items: center;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #4a90e2;
-        }
-
         .card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 24px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
@@ -42,14 +54,8 @@
             margin: 0.5rem;
         }
 
-        label {
-            display: block;
-            margin: 1rem 0 0.5rem;
-            font-weight: bold;
-        }
-
         button {
-            background-color: #4a90e2;
+            background-color: var(--accent);
             color: white;
             border: none;
             cursor: pointer;
@@ -62,8 +68,8 @@
 
         .response-bubble {
             margin-top: 2rem;
-            background: #f0f9ff;
-            border-left: 6px solid #4a90e2;
+            background: var(--bubble-bg);
+            border-left: 6px solid var(--bubble-border);
             padding: 1rem;
             border-radius: 12px;
             font-size: 1.1rem;
@@ -88,6 +94,12 @@
     <h1>🧸 Toylogue: Talk to a Toy</h1>
 
     <div class="card">
+        <div style="text-align: right; margin-bottom: 1rem;">
+            <button onclick="toggleDarkMode()" style="font-size: 0.9rem;">
+                🌙 Toggle Dark Mode
+            </button>
+        </div>
+
         <!-- Role selector -->
         <label for="role">Choose a Role:</label>
         <select id="role">
@@ -201,6 +213,10 @@
                 alert("Something went wrong!");
             }
         }
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+        }
+
     </script>
 
 </body>
