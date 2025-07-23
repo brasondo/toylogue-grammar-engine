@@ -182,7 +182,6 @@
                 const utterance = new SpeechSynthesisUtterance(cleanText);
                 speechSynthesis.speak(utterance);
 
-                speechSynthesis.speak(utterance);
             } catch (err) {
                 console.error("❌ Error calling /generate:", err);
                 alert("Something went wrong!");
