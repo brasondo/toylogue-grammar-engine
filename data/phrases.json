@@ -1,34 +1,111 @@
 {
   "rules": [
     {
-      "lhs": "S",
+      "lhs": "S_HERO",
       "rhs": [
         "GREETING",
         "PUNCT",
-        "INTRO"
+        "INTRO_HERO"
       ]
     },
     {
-      "lhs": "INTRO",
+      "lhs": "S_VILLAIN",
       "rhs": [
-        "IDENTITY",
-        "and",
-        "ASSERTION"
+        "GREETING",
+        "PUNCT",
+        "INTRO_VILLAIN"
       ]
     },
     {
-      "lhs": "IDENTITY",
+      "lhs": "S_GOOFBALL",
+      "rhs": [
+        "GREETING",
+        "PUNCT",
+        "INTRO_GOOFBALL"
+      ]
+    },
+    {
+      "lhs": "S_MENTOR",
+      "rhs": [
+        "GREETING",
+        "PUNCT",
+        "INTRO_MENTOR"
+      ]
+    },
+    {
+      "lhs": "S_REBEL",
+      "rhs": [
+        "GREETING",
+        "PUNCT",
+        "INTRO_REBEL"
+      ]
+    },
+    {
+      "lhs": "S_ROYALTY",
+      "rhs": [
+        "GREETING",
+        "PUNCT",
+        "INTRO_ROYALTY"
+      ]
+    },
+    {
+      "lhs": "INTRO_HERO",
       "rhs": [
         "SELF_REF",
-        "NAME",
-        "ROLE_TAG"
+        "NAME_HERO",
+        "ROLE_TAG_HERO",
+        "and",
+        "CLAIM_HERO"
       ]
     },
     {
-      "lhs": "ASSERTION",
+      "lhs": "INTRO_VILLAIN",
       "rhs": [
-        "CLAIM_INTRO",
-        "CHARACTER_CLAIM"
+        "SELF_REF",
+        "NAME_VILLAIN",
+        "ROLE_TAG_VILLAIN",
+        "and",
+        "CLAIM_VILLAIN"
+      ]
+    },
+    {
+      "lhs": "INTRO_GOOFBALL",
+      "rhs": [
+        "SELF_REF",
+        "NAME_GOOFBALL",
+        "ROLE_TAG_GOOFBALL",
+        "and",
+        "CLAIM_GOOFBALL"
+      ]
+    },
+    {
+      "lhs": "INTRO_MENTOR",
+      "rhs": [
+        "SELF_REF",
+        "NAME_MENTOR",
+        "ROLE_TAG_MENTOR",
+        "and",
+        "CLAIM_MENTOR"
+      ]
+    },
+    {
+      "lhs": "INTRO_REBEL",
+      "rhs": [
+        "SELF_REF",
+        "NAME_REBEL",
+        "ROLE_TAG_REBEL",
+        "and",
+        "CLAIM_REBEL"
+      ]
+    },
+    {
+      "lhs": "INTRO_ROYALTY",
+      "rhs": [
+        "SELF_REF",
+        "NAME_ROYALTY",
+        "ROLE_TAG_ROYALTY",
+        "and",
+        "CLAIM_ROYALTY"
       ]
     },
     {
@@ -60,51 +137,170 @@
       ]
     },
     {
-      "lhs": "NAME",
+      "lhs": "NAME_HERO",
       "rhs": [
         "Lightning McQueen",
-        "The Overlord",
         "Princess Starfire",
-        "Captain Boom",
-        "Whiskers the Wizard",
-        "King Blarg",
-        "Shadowbot-9",
-        "Professor Pancake"
+        "Captain Boom"
       ]
     },
     {
-      "lhs": "ROLE_TAG",
+      "lhs": "NAME_VILLAIN",
+      "rhs": [
+        "The Overlord",
+        "King Blarg",
+        "Dr. Dread",
+        "Voidmaster"
+      ]
+    },
+    {
+      "lhs": "NAME_GOOFBALL",
+      "rhs": [
+        "Whiskers the Wizard",
+        "Professor Pancake",
+        "Captain Noodle",
+        "Bongo the Clown"
+      ]
+    },
+    {
+      "lhs": "NAME_MENTOR",
+      "rhs": [
+        "Sage Orion",
+        "Master Lin",
+        "Elder Whisper",
+        "The Silent One"
+      ]
+    },
+    {
+      "lhs": "NAME_REBEL",
+      "rhs": [
+        "Shadowbot-9",
+        "Blaze Vortex",
+        "Nova Strike",
+        "Rogue Ember"
+      ]
+    },
+    {
+      "lhs": "NAME_ROYALTY",
+      "rhs": [
+        "Queen Aurelia",
+        "Lord Verdane",
+        "Empress Vega",
+        "Duke Ironhelm"
+      ]
+    },
+    {
+      "lhs": "ROLE_TAG_HERO",
       "rhs": [
         "",
         " the fastest racecar alive",
-        " ruler of this land",
-        " your worst nightmare",
         " defender of dreams",
+        " protector of the innocent"
+      ]
+    },
+    {
+      "lhs": "ROLE_TAG_VILLAIN",
+      "rhs": [
+        "",
         " overlord of this city",
-        " champion of the arena"
+        " your worst nightmare",
+        " ruler of shadows"
       ]
     },
     {
-      "lhs": "CLAIM_INTRO",
+      "lhs": "ROLE_TAG_GOOFBALL",
       "rhs": [
-        "and",
-        "because",
-        "since",
-        "as you know",
-        "for I am"
+        "",
+        " bringer of chaos sprinkles",
+        " enemy of boredom",
+        " jester of jellybeans"
       ]
     },
     {
-      "lhs": "CHARACTER_CLAIM",
+      "lhs": "ROLE_TAG_MENTOR",
       "rhs": [
-        "the fastest there ever was",
+        "",
+        " guide of the lost",
+        " voice of the ancients",
+        " watcher of the stars"
+      ]
+    },
+    {
+      "lhs": "ROLE_TAG_REBEL",
+      "rhs": [
+        "",
+        " outlaw of the grid",
+        " spark in the system",
+        " breaker of chains"
+      ]
+    },
+    {
+      "lhs": "ROLE_TAG_ROYALTY",
+      "rhs": [
+        "",
+        " ruler of this land",
+        " heir to the throne eternal",
+        " sovereign of the realm"
+      ]
+    },
+    {
+      "lhs": "CLAIM_HERO",
+      "rhs": [
+        "here to protect the innocent",
+        "ready to save the day",
+        "powered by courage",
+        "defender of the realm",
+        "the fastest there ever was"
+      ]
+    },
+    {
+      "lhs": "CLAIM_VILLAIN",
+      "rhs": [
         "the one you fear most",
-        "destined to win every battle",
-        "powered by pure imagination",
+        "overlord of this city",
+        "your doom made flesh",
+        "bringer of chaos",
+        "ruler of all you see"
+      ]
+    },
+    {
+      "lhs": "CLAIM_GOOFBALL",
+      "rhs": [
         "coming to steal your cookies",
-        "ready to rule the night",
-        "trained in every martial art",
-        "so shiny I blind my enemies"
+        "so shiny I blind my enemies",
+        "armed with a rubber chicken",
+        "here to juggle flaming muffins",
+        "ready to prank the king"
+      ]
+    },
+    {
+      "lhs": "CLAIM_MENTOR",
+      "rhs": [
+        "here to light your path",
+        "keeper of the ancient ways",
+        "speaker of forgotten truths",
+        "one with the stars",
+        "guardian of wisdom"
+      ]
+    },
+    {
+      "lhs": "CLAIM_REBEL",
+      "rhs": [
+        "not here to follow rules",
+        "born to break boundaries",
+        "on fire and unstoppable",
+        "faster than the system can track",
+        "freedom is my only cause"
+      ]
+    },
+    {
+      "lhs": "CLAIM_ROYALTY",
+      "rhs": [
+        "commander of legions",
+        "the law made flesh",
+        "sovereign of this domain",
+        "your rightful ruler",
+        "keeper of the royal flame"
       ]
     }
   ]

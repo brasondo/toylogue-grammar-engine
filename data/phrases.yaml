@@ -33,7 +33,7 @@ rules:
       ["Hi", "Hello", "Good evening", "Greetings", "Hey there", "Salutations"]
 
   - lhs: PUNCT
-    rhs: [".", ",", "—"]
+    rhs: [".", ",", "-", "!", "?"]
 
   - lhs: SELF_REF
     rhs: ["I'm", "I am"]
