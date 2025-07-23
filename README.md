@@ -83,7 +83,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Toylogue][product-screenshot]](http://machlerlabs.com)
 
 Toylogue is a modular, grammar-driven NLP engine for generating expressive, role-specific dialogue for toys, characters, and games.  
 It combines structured grammar (YAML) with syntactic introspection (spaCy), logical role constraints (Prolog), CFG modeling (NLTK), and optional LLM surface realization (e.g. Ollama).  
@@ -264,4 +264,4 @@ Project Link: [https://github.com/brasondo/toylogue-grammar-engine](https://gith
 [license-url]: https://github.com/brasondo/toylogue-grammar-engine/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/brasondo
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/product-screenshot.png
