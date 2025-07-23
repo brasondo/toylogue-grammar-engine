@@ -125,7 +125,6 @@
         <div id="response" class="response-bubble" style="display: none;"></div>
     </div>
 
-
     <script>
         const avatarMap = {
             hero: "🦸",
@@ -136,7 +135,22 @@
             royalty: "👑"
         };
 
-        // Typing effect function
+        let voices = [];
+
+        // Load available voices (may load async in some browsers)
+        speechSynthesis.onvoiceschanged = () => {
+            voices = speechSynthesis.getVoices();
+        };
+
+        const roleVoices = {
+            hero: () => voices.find(v => v.name.includes("Daniel") || v.name.includes("Google UK English Male")),
+            villain: () => voices.find(v => v.name.includes("Fred") || v.name.includes("Google US English")),
+            mentor: () => voices.find(v => v.name.includes("Karen") || v.name.includes("Google UK English Female")),
+            goofball: () => voices.find(v => v.name.includes("Albert") || v.name.includes("Google Deutsch")),
+            rebel: () => voices.find(v => v.name.includes("Alex") || v.name.includes("Google US English")),
+            royalty: () => voices.find(v => v.name.includes("Victoria") || v.name.includes("Google UK English Female")),
+        };
+
         function typeText(text, element) {
             element.innerText = "";
             const words = text.split(/(\s+)/); // Split by space and preserve spacing
@@ -144,24 +158,21 @@
 
             function nextWord() {
                 if (i >= words.length) return;
-
                 element.innerText += words[i];
                 i++;
-
                 setTimeout(nextWord, 60);
             }
 
             nextWord();
         }
 
-        // 🚀 Generates dialogue on click
         async function generate() {
             const role = document.getElementById("role").value;
             const context = document.getElementById("context").value;
             const use_llm = document.getElementById("use_llm").checked;
 
-            // 🎭 Update avatar emoji
             document.getElementById("avatar").innerText = avatarMap[role] || "🧸";
+
             try {
                 const res = await fetch("/generate", {
                     method: "POST",
@@ -173,13 +184,16 @@
                 const responseEl = document.getElementById("response");
                 responseEl.style.display = "block";
 
-                // 💬 Use typing animation
+                // 💬 Animate text
                 typeText(data.response, responseEl);
 
-                // 🔊 Speak out loud
-                // 🧼 Strip out actions like *waves* before speaking
+                // 🔊 Speak the line
+                speechSynthesis.cancel(); // Prevent overlap
                 const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
                 const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.voice = roleVoices[role]?.() || voices[0];
+                utterance.pitch = role === "goofball" ? 1.6 : 1;
+                utterance.rate = role === "villain" ? 0.9 : 1;
                 speechSynthesis.speak(utterance);
 
             } catch (err) {
