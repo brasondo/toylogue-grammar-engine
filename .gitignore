@@ -1,0 +1,31 @@
+# Virtual environment
+venv/
+ENV/
+env/
+*.env
+
+# Bytecode / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# Sensitive files
+.env              # Prevent API keys from being committed
+*.key
+*.pem
+
+# Ollama cache (if applicable)
+ollama/

@@ -138,8 +138,9 @@ To get a local copy up and running follow these simple example steps.
     ```sh
     python -m venv venv
     .\venv\Scripts\activate
-    pip install pyyaml
+    pip install -r requirements.txt
     ```
+
 
 3. Run demo
     ```sh
