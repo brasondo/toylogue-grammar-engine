@@ -2,281 +2,298 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Toylogue: Talk to a Toy</title>
-    <style>
-        :root {
-            --bg: linear-gradient(145deg, #fefefe, #e8f4ff);
-            --card-bg: white;
-            --text: #222;
-            --bubble-bg: #f0f9ff;
-            --bubble-border: #4a90e2;
-            --accent: #4a90e2;
-        }
+  <meta charset="UTF-8" />
+  <title>Toylogue: Talk to a Toy</title>
+  <style>
+    :root {
+      --bg: linear-gradient(145deg, #fefefe, #e8f4ff);
+      --card-bg: white;
+      --text: #222;
+      --bubble-bg: #f0f9ff;
+      --bubble-border: #4a90e2;
+      --accent: #4a90e2;
+    }
 
-        body.dark {
-            --bg: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            --card-bg: #2b2b2b;
-            --text: #eee;
-            --bubble-bg: #333;
-            --bubble-border: #4a90e2;
-            --accent: #4a90e2;
-        }
+    body.dark {
+      --bg: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+      --card-bg: #2b2b2b;
+      --text: #eee;
+      --bubble-bg: #333;
+      --bubble-border: #4a90e2;
+      --accent: #4a90e2;
+    }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
 
-        select,
-        button,
-        input[type="checkbox"],
-        input[type="text"] {
-            font-size: 1rem;
-            padding: 0.6rem;
-            border-radius: 12px;
-            border: 1px solid #ccc;
-            margin: 0.5rem 0;
-        }
+    select,
+    button,
+    input[type="checkbox"],
+    input[type="text"] {
+      font-size: 1rem;
+      padding: 0.6rem;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      margin: 0.5rem 0;
+    }
 
-        button {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        button:hover {
-            background-color: #357abd;
-        }
+    button:hover {
+      background-color: #357abd;
+    }
 
-        .response-bubble {
-            margin-top: 2rem;
-            background: var(--bubble-bg);
-            border-left: 6px solid var(--bubble-border);
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            line-height: 1.5;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-            max-width: 100%;
-            box-sizing: border-box;
-            transition: all 0.2s ease-in-out;
-        }
+    .response-bubble {
+      margin-top: 2rem;
+      background: var(--bubble-bg);
+      border-left: 6px solid var(--bubble-border);
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      max-width: 100%;
+      box-sizing: border-box;
+      transition: all 0.2s ease-in-out;
+    }
 
-        .expressive {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
+    .expressive {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
 
-        #character-img {
-            transition: opacity 0.6s ease, transform 0.4s ease;
-            opacity: 0;
-            transform: scale(0.9);
-            margin: 1rem auto;
-            display: none;
-            width: 200px;
-            height: auto;
-        }
+    #character-img {
+      transition: opacity 0.6s ease, transform 0.4s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      margin: 1rem auto;
+      display: none;
+      width: 200px;
+      height: auto;
+    }
 
-        #character-img.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-    </style>
+    #character-img.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
 </head>
 
 <body>
-    <h1>🧸 Toylogue: Talk to a Toy</h1>
+  <h1>🧸 Toylogue: Talk to a Toy</h1>
 
-    <div class="card">
-        <div style="text-align: right; margin-bottom: 1rem;">
-            <button onclick="toggleDarkMode()" style="font-size: 0.9rem;">
-                🌙 Toggle Dark Mode
-            </button>
-        </div>
-
-        <!-- Role selector -->
-        <label for="role">Choose a Role:</label>
-        <select id="role">
-            <option value="hero">🦸 Hero</option>
-            <option value="villain">😈 Villain</option>
-            <option value="mentor">🧙 Mentor</option>
-            <option value="goofball">🤪 Goofball</option>
-            <option value="rebel">🎸 Rebel</option>
-            <option value="royalty">👑 Royalty</option>
-        </select>
-
-        <!-- Context selector -->
-        <label for="context">Context:</label>
-        <select id="context">
-            <option value="">None</option>
-            <option value="picked_up">Picked Up</option>
-            <option value="hugged">Hugged</option>
-            <option value="smile_detected">Smile Detected</option>
-        </select>
-
-        <!-- Expressiveness toggle -->
-        <div class="expressive">
-            <label>
-                <input type="checkbox" id="use_llm" checked />
-                ✨ Use Expressiveness (LLM)
-            </label>
-        </div>
-
-        <!-- 🖼️ Character image -->
-        <img id="character-img" src="" alt="Character Image" />
-
-
-        <!-- 💬 Response bubble -->
-        <div id="response" class="response-bubble" style="display: none;"></div>
-
-        <!-- 📝 Follow-up prompt -->
-        <div id="followup-section" style="margin-top: 1rem;">
-            <label for="followup">Your Prompt:</label>
-            <input type="text" id="followup" placeholder="Ask the toy something..." />
-            <button onclick="sendFollowUp()">📨 Send</button>
-        </div>
+  <div class="card">
+    <div style="text-align: right; margin-bottom: 1rem;">
+      <button onclick="toggleDarkMode()" style="font-size: 0.9rem;">
+        🌙 Toggle Dark Mode
+      </button>
     </div>
 
-    <script>
-        const avatarMap = {
-            hero: "🦸",
-            villain: "😈",
-            mentor: "🧙",
-            goofball: "🤪",
-            rebel: "🎸",
-            royalty: "👑"
-        };
+    <!-- Role selector -->
+    <label for="role">Choose a Role:</label>
+    <select id="role">
+      <option value="hero">🦸 Hero</option>
+      <option value="villain">😈 Villain</option>
+      <option value="mentor">🧙 Mentor</option>
+      <option value="goofball">🤪 Goofball</option>
+      <option value="rebel">🎸 Rebel</option>
+      <option value="royalty">👑 Royalty</option>
+    </select>
 
-        let voices = [];
+    <!-- Context selector -->
+    <label for="context">Context:</label>
+    <select id="context">
+      <option value="">None</option>
+      <option value="picked_up">Picked Up</option>
+      <option value="hugged">Hugged</option>
+      <option value="smile_detected">Smile Detected</option>
+    </select>
 
-        speechSynthesis.onvoiceschanged = () => {
-            voices = speechSynthesis.getVoices();
-        };
+    <!-- Expressiveness toggle -->
+    <div class="expressive">
+      <label>
+        <input type="checkbox" id="use_llm" checked />
+        ✨ Use Expressiveness (LLM)
+      </label>
+    </div>
 
-        const roleVoices = {
-            hero: () => voices.find(v => v.name.includes("Daniel") || v.name.includes("Google UK English Male")),
-            villain: () => voices.find(v => v.name.includes("Fred") || v.name.includes("Google US English")),
-            mentor: () => voices.find(v => v.name.includes("Karen") || v.name.includes("Google UK English Female")),
-            goofball: () => voices.find(v => v.name.includes("Albert") || v.name.includes("Google Deutsch")),
-            rebel: () => voices.find(v => v.name.includes("Alex") || v.name.includes("Google US English")),
-            royalty: () => voices.find(v => v.name.includes("Victoria") || v.name.includes("Google UK English Female")),
-        };
+    <!-- 🖼️ Character image -->
+    <img id="character-img" src="" alt="Character Image" />
 
-        function typeText(text, element) {
-            element.innerText = "";
-            const words = text.split(/(\s+)/);
-            let i = 0;
-            function nextWord() {
-                if (i >= words.length) return;
-                element.innerText += words[i++];
-                setTimeout(nextWord, 60);
-            }
-            nextWord();
-        }
 
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark");
-        }
+    <!-- 💬 Response bubble -->
+    <div id="response" class="response-bubble" style="display: none;"></div>
 
-        async function generate() {
-            const role = document.getElementById("role").value;
-            const context = document.getElementById("context").value;
-            const use_llm = document.getElementById("use_llm").checked;
+    <!-- 📝 Follow-up prompt -->
+    <div id="followup-section" style="margin-top: 1rem;">
+      <label for="followup">Your Prompt:</label>
+      <input type="text" id="followup" placeholder="Ask the toy something..." />
+      <button onclick="sendFollowUp()">📨 Send</button>
+    </div>
+  </div>
 
-            // Show character image
-            const imgEl = document.getElementById("character-img");
-            imgEl.src = `/static/images/${role}.png`;
-            imgEl.classList.remove("show");
-            void imgEl.offsetWidth;
-            imgEl.classList.add("show");
-            imgEl.style.display = "block";
+  <script>
+    const avatarMap = {
+      hero: "🦸",
+      villain: "😈",
+      mentor: "🧙",
+      goofball: "🤪",
+      rebel: "🎸",
+      royalty: "👑"
+    };
 
-            try {
-                const res = await fetch("/generate", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ role, context, use_llm }),
-                });
+    let voices = [];
 
-                const data = await res.json();
-                const responseEl = document.getElementById("response");
-                responseEl.style.display = "block";
-                typeText(data.response, responseEl);
+    speechSynthesis.onvoiceschanged = () => {
+      voices = speechSynthesis.getVoices();
+    };
 
-                speechSynthesis.cancel();
-                const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.voice = roleVoices[role]?.() || voices[0];
-                utterance.pitch = role === "goofball" ? 1.6 : 1;
-                utterance.rate = role === "villain" ? 0.9 : 1;
-                speechSynthesis.speak(utterance);
+    const roleVoices = {
+      hero: () => voices.find(v => v.name.includes("Daniel") || v.name.includes("Google UK English Male")),
+      villain: () => voices.find(v => v.name.includes("Fred") || v.name.includes("Google US English")),
+      mentor: () => voices.find(v => v.name.includes("Karen") || v.name.includes("Google UK English Female")),
+      goofball: () => voices.find(v => v.name.includes("Albert") || v.name.includes("Google Deutsch")),
+      rebel: () => voices.find(v => v.name.includes("Alex") || v.name.includes("Google US English")),
+      royalty: () => voices.find(v => v.name.includes("Victoria") || v.name.includes("Google UK English Female")),
+    };
 
-                document.getElementById("followup-section").style.display = "block";
-                document.getElementById("followup").focus();
+    function typeText(text, element) {
+      element.textContent = ""; // Clear it first
+      const words = text.split(/(\s+)/); // Split while preserving spacing
+      let i = 0;
 
-            } catch (err) {
-                console.error("❌ Error calling /generate:", err);
-                alert("Something went wrong!");
-            }
-        }
+      function nextWord() {
+        if (i >= words.length) return;
 
-        async function sendFollowUp() {
-            const followup = document.getElementById("followup").value.trim();
-            if (!followup) return;
+        element.textContent += words[i];
+        i++;
 
-            const role = document.getElementById("role").value;
-            const use_llm = document.getElementById("use_llm").checked;
+        // Force browser to paint before next word
+        requestAnimationFrame(() => setTimeout(nextWord, 60));
+      }
 
-            try {
-                const res = await fetch("/generate", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ role, context: followup, use_llm }),
-                });
+      nextWord();
+    }
 
-                const data = await res.json();
-                const responseEl = document.getElementById("response");
-                responseEl.innerText = "";
-                typeText(data.response, responseEl);
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
 
-                speechSynthesis.cancel();
-                const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.voice = roleVoices[role]?.() || voices[0];
-                utterance.pitch = role === "goofball" ? 1.6 : 1;
-                utterance.rate = role === "villain" ? 0.9 : 1;
-                speechSynthesis.speak(utterance);
+    async function generate() {
+      const role = document.getElementById("role").value;
+      const context = document.getElementById("context").value;
+      const use_llm = document.getElementById("use_llm").checked;
 
-                document.getElementById("followup").value = "";
-                document.getElementById("followup").focus();
+      // Show character image
+      const imgEl = document.getElementById("character-img");
+      imgEl.src = `/static/images/${role}.png`;
 
-            } catch (err) {
-                console.error("❌ Error in follow-up:", err);
-                alert("Something went wrong!");
-            }
-        }
-    </script>
+
+
+      imgEl.classList.remove("show");
+      void imgEl.offsetWidth;
+      imgEl.classList.add("show");
+      imgEl.style.display = "block";
+
+      try {
+        const res = await fetch("/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ role, context, use_llm }),
+        });
+
+        const data = await res.json();
+        const responseEl = document.getElementById("response");
+        responseEl.style.display = "block";
+        typeText(data.response, responseEl);
+
+        speechSynthesis.cancel();
+        const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.voice = roleVoices[role]?.() || voices[0];
+        utterance.pitch = role === "goofball" ? 1.6 : 1;
+        utterance.rate = role === "villain" ? 0.9 : 1;
+        speechSynthesis.speak(utterance);
+
+        document.getElementById("followup-section").style.display = "block";
+        document.getElementById("followup").focus();
+
+      } catch (err) {
+        console.error("❌ Error calling /generate:", err);
+        alert("Something went wrong!");
+      }
+    }
+
+    async function sendFollowUp() {
+      const followup = document.getElementById("followup").value.trim();
+      if (!followup) return;
+
+      const role = document.getElementById("role").value;
+      const use_llm = document.getElementById("use_llm").checked;
+
+      // ✅ Also update character image on follow-up
+      const imgEl = document.getElementById("character-img");
+      imgEl.src = `/static/images/${role}.png`;
+      imgEl.classList.remove("show");
+      void imgEl.offsetWidth;
+      imgEl.classList.add("show");
+      imgEl.style.display = "block";
+
+      try {
+        const res = await fetch("/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ role, context: followup, use_llm }),
+        });
+
+        const data = await res.json();
+        const responseEl = document.getElementById("response");
+        responseEl.style.display = "block";
+        responseEl.textContent = "";
+        typeText(data.response, responseEl);
+
+        speechSynthesis.cancel();
+        const cleanText = data.response.replace(/\*[^*]+\*/g, "").trim();
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.voice = roleVoices[role]?.() || voices[0];
+        utterance.pitch = role === "goofball" ? 1.6 : 1;
+        utterance.rate = role === "villain" ? 0.9 : 1;
+        speechSynthesis.speak(utterance);
+
+        document.getElementById("followup").value = "";
+        document.getElementById("followup").focus();
+      } catch (err) {
+        console.error("❌ Error in follow-up:", err);
+        alert("Something went wrong!");
+      }
+    }
+  </script>
 </body>
 
 </html>
