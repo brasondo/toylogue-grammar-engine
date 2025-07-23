@@ -87,6 +87,21 @@
             font-size: 0.9rem;
             color: #666;
         }
+
+        #character-img {
+            transition: opacity 0.6s ease, transform 0.4s ease;
+            opacity: 0;
+            transform: scale(0.9);
+            margin: 1rem auto;
+            display: none;
+            width: 200px;
+            height: auto;
+        }
+
+        #character-img.show {
+            opacity: 1;
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -128,16 +143,15 @@
             </label>
         </div>
 
-        <button onclick="generate()">🗣️ Speak!</button>
+        <!-- 🖼️ Character image -->
+        <img id="character-img" src="" alt="Character Image" />
 
-        <!-- 👾 Avatar display -->
-        <h2 id="avatar" style="font-size: 3rem; margin-top: 1rem;">🧸</h2>
 
         <!-- 💬 Response bubble -->
         <div id="response" class="response-bubble" style="display: none;"></div>
 
         <!-- 📝 Follow-up prompt -->
-        <div id="followup-section" style="display: none; margin-top: 1rem;">
+        <div id="followup-section" style="margin-top: 1rem;">
             <label for="followup">Your Prompt:</label>
             <input type="text" id="followup" placeholder="Ask the toy something..." />
             <button onclick="sendFollowUp()">📨 Send</button>
@@ -181,11 +195,22 @@
             nextWord();
         }
 
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+        }
+
         async function generate() {
             const role = document.getElementById("role").value;
             const context = document.getElementById("context").value;
             const use_llm = document.getElementById("use_llm").checked;
-            document.getElementById("avatar").innerText = avatarMap[role] || "🧸";
+
+            // Show character image
+            const imgEl = document.getElementById("character-img");
+            imgEl.src = `/static/images/${role}.png`;
+            imgEl.classList.remove("show");
+            void imgEl.offsetWidth;
+            imgEl.classList.add("show");
+            imgEl.style.display = "block";
 
             try {
                 const res = await fetch("/generate", {
@@ -209,6 +234,7 @@
 
                 document.getElementById("followup-section").style.display = "block";
                 document.getElementById("followup").focus();
+
             } catch (err) {
                 console.error("❌ Error calling /generate:", err);
                 alert("Something went wrong!");
@@ -244,14 +270,11 @@
 
                 document.getElementById("followup").value = "";
                 document.getElementById("followup").focus();
+
             } catch (err) {
                 console.error("❌ Error in follow-up:", err);
                 alert("Something went wrong!");
             }
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark");
         }
     </script>
 </body>
