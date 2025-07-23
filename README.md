@@ -132,7 +132,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    
    git clone https://github.com/brasondo/toylogue-grammar-engine.git
-   cd toylogue-grammar-engine/Toylogue
+   cd toylogue-grammar-engine
    ```
 
 2. Set up virtual environment
