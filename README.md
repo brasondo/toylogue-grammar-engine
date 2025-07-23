@@ -176,8 +176,13 @@ python app.py
 - [x] NLTK CFG tree generation (generative syntax demo)
 - [x] spaCy POS + dependency introspection
 - [x] LLM-based expressive surface realization via Ollama
-- [ ] Interactive authoring tool for character grammars
-- [ ] Dialogue chaining with context persistence
+- [x] Interactive web interface with dark mode and animated typing
+- [x] Character avatars and voice synthesis per role (SpeechSynthesis API)
+- [x] Follow-up prompt support for branching dialogue
+- [ ] Persistent toy personality memory across turns
+- [ ] Context-sensitive response planning (mood, setting, tone shift)
+- [ ] Grammar authoring UI for non-technical users
+- [ ] Exportable toy dialogue profiles for integration into real games
 
 See the [open issues](https://github.com/brasondo/toylogue-grammar-engine/issues) for a full list of proposed features (and known issues).
 
