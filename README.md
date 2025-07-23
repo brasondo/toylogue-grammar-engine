@@ -162,7 +162,7 @@ To launch the app locally:
 python app.py
 # Then visit http://localhost:3000
 ```
-<img src="static/images/web-ui-preview.png" alt="Toylogue Web App" width="75%" />
+<img src="static/images/web-ui-preview.png" alt="Toylogue Web App" width="50%" />
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
