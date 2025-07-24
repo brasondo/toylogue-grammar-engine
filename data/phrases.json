@@ -111,12 +111,11 @@
     {
       "lhs": "GREETING",
       "rhs": [
-        "Hi",
         "Hello",
-        "Good evening",
+        "Hi",
         "Greetings",
-        "Hey there",
-        "Salutations"
+        "Good day",
+        "Hey"
       ]
     },
     {
@@ -124,9 +123,7 @@
       "rhs": [
         ".",
         ",",
-        "-",
-        "!",
-        "?"
+        "-"
       ]
     },
     {
@@ -193,114 +190,114 @@
       "lhs": "ROLE_TAG_HERO",
       "rhs": [
         "",
-        " the fastest racecar alive",
-        " defender of dreams",
-        " protector of the innocent"
+        " a racecar",
+        " a hopeful soul",
+        " someone who cares"
       ]
     },
     {
       "lhs": "ROLE_TAG_VILLAIN",
       "rhs": [
         "",
-        " overlord of this city",
-        " your worst nightmare",
-        " ruler of shadows"
+        " a challenging foe",
+        " someone to watch",
+        " a complex figure"
       ]
     },
     {
       "lhs": "ROLE_TAG_GOOFBALL",
       "rhs": [
         "",
-        " bringer of chaos sprinkles",
-        " enemy of boredom",
-        " jester of jellybeans"
+        " a bit of fun",
+        " a source of laughter",
+        " a friendly jester"
       ]
     },
     {
       "lhs": "ROLE_TAG_MENTOR",
       "rhs": [
         "",
-        " guide of the lost",
-        " voice of the ancients",
-        " watcher of the stars"
+        " a guide",
+        " a voice of reason",
+        " a thoughtful watcher"
       ]
     },
     {
       "lhs": "ROLE_TAG_REBEL",
       "rhs": [
         "",
-        " outlaw of the grid",
-        " spark in the system",
-        " breaker of chains"
+        " a free spirit",
+        " a nonconformist",
+        " a seeker of change"
       ]
     },
     {
       "lhs": "ROLE_TAG_ROYALTY",
       "rhs": [
         "",
-        " ruler of this land",
-        " heir to the throne eternal",
-        " sovereign of the realm"
+        " a leader",
+        " a steward of the land",
+        " a figure of authority"
       ]
     },
     {
       "lhs": "CLAIM_HERO",
       "rhs": [
-        "here to protect the innocent",
-        "ready to save the day",
-        "powered by courage",
-        "defender of the realm",
-        "the fastest there ever was"
+        "here to help",
+        "ready to do my best",
+        "driven by hope",
+        "looking out for others",
+        "focused on the road ahead"
       ]
     },
     {
       "lhs": "CLAIM_VILLAIN",
       "rhs": [
-        "the one you fear most",
-        "overlord of this city",
-        "your doom made flesh",
-        "bringer of chaos",
-        "ruler of all you see"
+        "a force to reckon with",
+        "not easily stopped",
+        "set on my path",
+        "strong and determined",
+        "standing my ground"
       ]
     },
     {
       "lhs": "CLAIM_GOOFBALL",
       "rhs": [
-        "coming to steal your cookies",
-        "so shiny I blind my enemies",
-        "armed with a rubber chicken",
-        "here to juggle flaming muffins",
-        "ready to prank the king"
+        "here to make you smile",
+        "ready to lighten the mood",
+        "bringing a little chaos",
+        "always up for fun",
+        "happy to play along"
       ]
     },
     {
       "lhs": "CLAIM_MENTOR",
       "rhs": [
-        "here to light your path",
-        "keeper of the ancient ways",
-        "speaker of forgotten truths",
-        "one with the stars",
-        "guardian of wisdom"
+        "here to guide",
+        "keeper of knowledge",
+        "speaker of truths",
+        "one who listens",
+        "ready to support"
       ]
     },
     {
       "lhs": "CLAIM_REBEL",
       "rhs": [
         "not here to follow rules",
-        "born to break boundaries",
-        "on fire and unstoppable",
-        "faster than the system can track",
-        "freedom is my only cause"
+        "looking for new ways",
+        "challenging the norm",
+        "pushing boundaries",
+        "seeking freedom"
       ]
     },
     {
       "lhs": "CLAIM_ROYALTY",
       "rhs": [
-        "commander of legions",
-        "the law made flesh",
-        "sovereign of this domain",
-        "your rightful ruler",
-        "keeper of the royal flame"
+        "committed to my people",
+        "focused on balance",
+        "here to serve",
+        "upholding traditions",
+        "working for the realm"
       ]
     }
   ]

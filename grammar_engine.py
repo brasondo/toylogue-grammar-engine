@@ -54,13 +54,19 @@ def recursive_generate(rules, symbol="S"):
 
 # ---------------- Ollama LLM Realization ---------------- #
 def surface_realize_with_ollama(structure, role=None):
-    prompt = f"You are a toy character of type '{role}'. Say the following line with expressiveness:\n{structure}"
+    prompt = f"""
+You are a {role} character who speaks clearly and concisely.
+Rewrite the following line to sound natural and expressive but keep it brief (around 2 sentences):
+
+{structure}
+"""
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
             json={
                 "model": "llama3",
                 "prompt": prompt,
+                "max_tokens": 50,
                 "stream": False
             },
             timeout=10,
