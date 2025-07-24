@@ -27,7 +27,7 @@ archetypes = ["S_HERO", "S_VILLAIN", "S_GOOFBALL", "S_MENTOR", "S_REBEL", "S_ROY
 
 for role_symbol in archetypes:
     print(f"\n{role_symbol} samples:")
-    for _ in range(2):
+    for _ in range(1):
         base = recursive_generate(rules, symbol=role_symbol)
         print("Raw:", base)
         refined = surface_realize_with_ollama(base, role=role_symbol.replace("S_", "").lower())
