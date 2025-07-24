@@ -107,6 +107,11 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
+Demo the responses and Grammar Tree example
+```
+python demo.py
+```
+
 Launch the Web App
 ```
 python app.py
