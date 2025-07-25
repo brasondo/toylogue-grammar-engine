@@ -49,7 +49,14 @@ def recursive_generate(rules, symbol="S"):
     nonterminals = {r['lhs'] for r in rules}
     if all(t not in nonterminals for t in rhs):
         return random.choice(rhs)
-    return " ".join(recursive_generate(rules, t) for t in rhs)
+    parts = []
+    for t in rhs:
+        if t in {r['lhs'] for r in rules}:
+            parts.append(recursive_generate(rules, t))
+        else:
+            parts.append(t)
+    return " ".join(parts)
+
 
 
 # ---------------- Ollama LLM Realization ---------------- #
