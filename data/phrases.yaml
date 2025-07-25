@@ -1,17 +1,58 @@
 rules:
-  # Entry points for each character type
-  - lhs: S_HERO
+  # Entry points for each character type + intent
+  - lhs: S_HERO_INTRO
     rhs: [GREETING, PUNCT, INTRO_HERO]
-  - lhs: S_VILLAIN
+  - lhs: S_HERO_HOBBY
+    rhs: [HOBBY_INTRO_HERO, NAME_HERO, PUNCT, HERO_HOBBY]
+  - lhs: S_HERO_ADVICE
+    rhs: [ADVICE_OPENER, NAME_HERO, PUNCT, HERO_WISDOM]
+  - lhs: S_HERO_CATCHPHRASE
+    rhs: [NAME_HERO, PUNCT, HERO_CATCHPHRASE]
+
+  - lhs: S_VILLAIN_INTRO
     rhs: [GREETING, PUNCT, INTRO_VILLAIN]
-  - lhs: S_GOOFBALL
+  - lhs: S_VILLAIN_HOBBY
+    rhs: [HOBBY_INTRO_VILLAIN, NAME_VILLAIN, PUNCT, VILLAIN_HOBBY]
+  - lhs: S_VILLAIN_ADVICE
+    rhs: [ADVICE_OPENER, NAME_VILLAIN, PUNCT, VILLAIN_WISDOM]
+  - lhs: S_VILLAIN_CATCHPHRASE
+    rhs: [NAME_VILLAIN, PUNCT, VILLAIN_CATCHPHRASE]
+
+  - lhs: S_GOOFBALL_INTRO
     rhs: [GREETING, PUNCT, INTRO_GOOFBALL]
-  - lhs: S_MENTOR
+  - lhs: S_GOOFBALL_HOBBY
+    rhs: [HOBBY_INTRO_GOOFBALL, NAME_GOOFBALL, PUNCT, GOOFBALL_HOBBY]
+  - lhs: S_GOOFBALL_ADVICE
+    rhs: [ADVICE_OPENER, NAME_GOOFBALL, PUNCT, GOOFBALL_WISDOM]
+  - lhs: S_GOOFBALL_CATCHPHRASE
+    rhs: [NAME_GOOFBALL, PUNCT, GOOFBALL_CATCHPHRASE]
+
+  - lhs: S_MENTOR_INTRO
     rhs: [GREETING, PUNCT, INTRO_MENTOR]
-  - lhs: S_REBEL
+  - lhs: S_MENTOR_HOBBY
+    rhs: [HOBBY_INTRO_MENTOR, NAME_MENTOR, PUNCT, MENTOR_HOBBY]
+  - lhs: S_MENTOR_ADVICE
+    rhs: [ADVICE_OPENER, NAME_MENTOR, PUNCT, MENTOR_WISDOM]
+  - lhs: S_MENTOR_CATCHPHRASE
+    rhs: [NAME_MENTOR, PUNCT, MENTOR_CATCHPHRASE]
+
+  - lhs: S_REBEL_INTRO
     rhs: [GREETING, PUNCT, INTRO_REBEL]
-  - lhs: S_ROYALTY
+  - lhs: S_REBEL_HOBBY
+    rhs: [HOBBY_INTRO_REBEL, NAME_REBEL, PUNCT, REBEL_HOBBY]
+  - lhs: S_REBEL_ADVICE
+    rhs: [ADVICE_OPENER, NAME_REBEL, PUNCT, REBEL_WISDOM]
+  - lhs: S_REBEL_CATCHPHRASE
+    rhs: [NAME_REBEL, PUNCT, REBEL_CATCHPHRASE]
+
+  - lhs: S_ROYALTY_INTRO
     rhs: [GREETING, PUNCT, INTRO_ROYALTY]
+  - lhs: S_ROYALTY_HOBBY
+    rhs: [HOBBY_INTRO_ROYALTY, NAME_ROYALTY, PUNCT, ROYALTY_HOBBY]
+  - lhs: S_ROYALTY_ADVICE
+    rhs: [ADVICE_OPENER, NAME_ROYALTY, PUNCT, ROYALTY_WISDOM]
+  - lhs: S_ROYALTY_CATCHPHRASE
+    rhs: [NAME_ROYALTY, PUNCT, ROYALTY_CATCHPHRASE]
 
   # Intro patterns: I am NAME TAG and CLAIM
   - lhs: INTRO_HERO
@@ -27,6 +68,179 @@ rules:
   - lhs: INTRO_ROYALTY
     rhs: [SELF_REF, NAME_ROYALTY, ROLE_TAG_ROYALTY, "and", CLAIM_ROYALTY]
 
+  # Hobby intros
+  - lhs: HOBBY_INTRO_HERO
+    rhs: ["When I'm not adventuring,", "In my downtime,"]
+  - lhs: HOBBY_INTRO_VILLAIN
+    rhs: ["When plotting my next move,", "In the shadows,"]
+  - lhs: HOBBY_INTRO_GOOFBALL
+    rhs: ["Between my pranks,", "When I'm feeling silly,"]
+  - lhs: HOBBY_INTRO_MENTOR
+    rhs: ["In quiet moments,", "When the world is calm,"]
+  - lhs: HOBBY_INTRO_REBEL
+    rhs: ["When breaking the rules,", "On the edge of chaos,"]
+  - lhs: HOBBY_INTRO_ROYALTY
+    rhs: ["Between royal duties,", "When not leading the realm,"]
+
+  # Hobby phrases
+  - lhs: HERO_HOBBY
+    rhs:
+      [
+        "I enjoy racing through winding paths.",
+        "I love exploring new horizons.",
+        "My favorite pastime is helping friends.",
+        "I often train to be faster and stronger.",
+      ]
+  - lhs: VILLAIN_HOBBY
+    rhs:
+      [
+        "I like crafting clever traps.",
+        "My hobby is weaving webs of mischief.",
+        "I spend time sharpening my wits.",
+        "Plotting is my favorite pastime.",
+      ]
+  - lhs: GOOFBALL_HOBBY
+    rhs:
+      [
+        "I delight in making everyone laugh.",
+        "Silly jokes are my specialty.",
+        "Playing tricks keeps me cheerful.",
+        "I bounce around spreading joy.",
+      ]
+  - lhs: MENTOR_HOBBY
+    rhs:
+      [
+        "I meditate under ancient trees.",
+        "Studying stars fills me with peace.",
+        "Teaching is my greatest joy.",
+        "I enjoy sharing stories of old.",
+      ]
+  - lhs: REBEL_HOBBY
+    rhs:
+      [
+        "I explore forbidden places.",
+        "I break rules to find new paths.",
+        "Adventure calls me endlessly.",
+        "I thrive where others fear to go.",
+      ]
+  - lhs: ROYALTY_HOBBY
+    rhs:
+      [
+        "I tend the royal gardens.",
+        "I write letters to my subjects.",
+        "Hosting feasts is my delight.",
+        "I enjoy crafting fine art.",
+      ]
+
+  # Advice openers (neutral for all)
+  - lhs: ADVICE_OPENER
+    rhs:
+      [
+        "Here is some advice:",
+        "Let me share a thought:",
+        "Consider this wisdom:",
+      ]
+
+  # Wisdom / advice by archetype
+  - lhs: HERO_WISDOM
+    rhs:
+      [
+        "Courage leads to great adventures.",
+        "Friendship is the greatest treasure.",
+        "Always keep moving forward.",
+        "Help others and you’ll find joy.",
+      ]
+  - lhs: VILLAIN_WISDOM
+    rhs:
+      [
+        "Power comes to those who dare.",
+        "Never let your guard down.",
+        "Chaos can be a tool, not a curse.",
+        "Outsmart your foes at every turn.",
+      ]
+  - lhs: GOOFBALL_WISDOM
+    rhs:
+      [
+        "Laughter is the best medicine.",
+        "Don’t be afraid to be silly.",
+        "Joy is found in unexpected places.",
+        "A smile can brighten the darkest day.",
+      ]
+  - lhs: MENTOR_WISDOM
+    rhs:
+      [
+        "Patience reveals hidden truths.",
+        "Knowledge grows with sharing.",
+        "Listen more than you speak.",
+        "Wisdom is a lifelong journey.",
+      ]
+  - lhs: REBEL_WISDOM
+    rhs:
+      [
+        "Challenge the norm to find freedom.",
+        "Change begins with a single step.",
+        "Rules exist to be questioned.",
+        "Dare to be different.",
+      ]
+  - lhs: ROYALTY_WISDOM
+    rhs:
+      [
+        "Leadership means serving others.",
+        "Kindness strengthens the realm.",
+        "Balance is the key to peace.",
+        "Honor is earned through actions.",
+      ]
+
+  # Catchphrases by archetype (fun closing lines)
+  - lhs: HERO_CATCHPHRASE
+    rhs:
+      [
+        "To the rescue, let’s go!",
+        "Speed and heart will win the day!",
+        "No challenge is too big!",
+        "Adventure awaits!",
+      ]
+  - lhs: VILLAIN_CATCHPHRASE
+    rhs:
+      [
+        "You can't escape my grasp!",
+        "Darkness always prevails!",
+        "Prepare to be outwitted!",
+        "My plans are unstoppable!",
+      ]
+  - lhs: GOOFBALL_CATCHPHRASE
+    rhs:
+      [
+        "Heehee, gotcha!",
+        "Let’s shake things up!",
+        "Silly fun for everyone!",
+        "Time to giggle and wiggle!",
+      ]
+  - lhs: MENTOR_CATCHPHRASE
+    rhs:
+      [
+        "Remember, every step counts.",
+        "Wisdom is the greatest treasure.",
+        "The journey shapes the hero.",
+        "Seek and you shall find.",
+      ]
+  - lhs: REBEL_CATCHPHRASE
+    rhs:
+      [
+        "Rules are made to be broken!",
+        "Let’s stir up some trouble!",
+        "Freedom is the only way!",
+        "The wild side calls!",
+      ]
+  - lhs: ROYALTY_CATCHPHRASE
+    rhs:
+      [
+        "Long live the kingdom!",
+        "May the realm prosper!",
+        "Rule with grace and strength!",
+        "Together, we thrive!",
+      ]
+
   # Shared symbols
   - lhs: GREETING
     rhs: ["Hello", "Hi", "Greetings", "Good day", "Hey", "Salutations"]
@@ -37,7 +251,7 @@ rules:
   - lhs: SELF_REF
     rhs: ["I'm", "I am"]
 
-  # Character names per role
+  # Character names per role (same as you have)
   - lhs: NAME_HERO
     rhs:
       [
