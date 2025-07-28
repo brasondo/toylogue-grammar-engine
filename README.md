@@ -98,11 +98,11 @@ To get a local copy up and running:
 ```bash
 git clone https://github.com/brasondo/toylogue-grammar-engine.git
 cd toylogue-grammar-engine
-python -m venvToylogue venv
+python -m venv310 venv
 # On Windows:
 venv\Scripts\activate
 # On macOS/Linux:
-source venvToylogue/bin/activate
+source venv310/bin/activate
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
