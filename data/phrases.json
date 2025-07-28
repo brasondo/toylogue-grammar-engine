@@ -1,7 +1,7 @@
 {
   "rules": [
     {
-      "lhs": "S_HERO",
+      "lhs": "S_HERO_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
@@ -9,7 +9,33 @@
       ]
     },
     {
-      "lhs": "S_VILLAIN",
+      "lhs": "S_HERO_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_HERO",
+        "NAME_HERO",
+        "PUNCT",
+        "HERO_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_HERO_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_HERO",
+        "PUNCT",
+        "HERO_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_HERO_CATCHPHRASE",
+      "rhs": [
+        "NAME_HERO",
+        "PUNCT",
+        "HERO_CATCHPHRASE"
+      ]
+    },
+    {
+      "lhs": "S_VILLAIN_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
@@ -17,7 +43,33 @@
       ]
     },
     {
-      "lhs": "S_GOOFBALL",
+      "lhs": "S_VILLAIN_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_VILLAIN",
+        "NAME_VILLAIN",
+        "PUNCT",
+        "VILLAIN_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_VILLAIN_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_VILLAIN",
+        "PUNCT",
+        "VILLAIN_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_VILLAIN_CATCHPHRASE",
+      "rhs": [
+        "NAME_VILLAIN",
+        "PUNCT",
+        "VILLAIN_CATCHPHRASE"
+      ]
+    },
+    {
+      "lhs": "S_GOOFBALL_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
@@ -25,7 +77,33 @@
       ]
     },
     {
-      "lhs": "S_MENTOR",
+      "lhs": "S_GOOFBALL_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_GOOFBALL",
+        "NAME_GOOFBALL",
+        "PUNCT",
+        "GOOFBALL_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_GOOFBALL_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_GOOFBALL",
+        "PUNCT",
+        "GOOFBALL_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_GOOFBALL_CATCHPHRASE",
+      "rhs": [
+        "NAME_GOOFBALL",
+        "PUNCT",
+        "GOOFBALL_CATCHPHRASE"
+      ]
+    },
+    {
+      "lhs": "S_MENTOR_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
@@ -33,7 +111,33 @@
       ]
     },
     {
-      "lhs": "S_REBEL",
+      "lhs": "S_MENTOR_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_MENTOR",
+        "NAME_MENTOR",
+        "PUNCT",
+        "MENTOR_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_MENTOR_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_MENTOR",
+        "PUNCT",
+        "MENTOR_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_MENTOR_CATCHPHRASE",
+      "rhs": [
+        "NAME_MENTOR",
+        "PUNCT",
+        "MENTOR_CATCHPHRASE"
+      ]
+    },
+    {
+      "lhs": "S_REBEL_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
@@ -41,11 +145,63 @@
       ]
     },
     {
-      "lhs": "S_ROYALTY",
+      "lhs": "S_REBEL_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_REBEL",
+        "NAME_REBEL",
+        "PUNCT",
+        "REBEL_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_REBEL_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_REBEL",
+        "PUNCT",
+        "REBEL_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_REBEL_CATCHPHRASE",
+      "rhs": [
+        "NAME_REBEL",
+        "PUNCT",
+        "REBEL_CATCHPHRASE"
+      ]
+    },
+    {
+      "lhs": "S_ROYALTY_INTRO",
       "rhs": [
         "GREETING",
         "PUNCT",
         "INTRO_ROYALTY"
+      ]
+    },
+    {
+      "lhs": "S_ROYALTY_HOBBY",
+      "rhs": [
+        "HOBBY_INTRO_ROYALTY",
+        "NAME_ROYALTY",
+        "PUNCT",
+        "ROYALTY_HOBBY"
+      ]
+    },
+    {
+      "lhs": "S_ROYALTY_ADVICE",
+      "rhs": [
+        "ADVICE_OPENER",
+        "NAME_ROYALTY",
+        "PUNCT",
+        "ROYALTY_WISDOM"
+      ]
+    },
+    {
+      "lhs": "S_ROYALTY_CATCHPHRASE",
+      "rhs": [
+        "NAME_ROYALTY",
+        "PUNCT",
+        "ROYALTY_CATCHPHRASE"
       ]
     },
     {
@@ -109,13 +265,226 @@
       ]
     },
     {
+      "lhs": "HOBBY_INTRO_HERO",
+      "rhs": [
+        "When I'm not adventuring,",
+        "In my downtime,"
+      ]
+    },
+    {
+      "lhs": "HOBBY_INTRO_VILLAIN",
+      "rhs": [
+        "When plotting my next move,",
+        "In the shadows,"
+      ]
+    },
+    {
+      "lhs": "HOBBY_INTRO_GOOFBALL",
+      "rhs": [
+        "Between my pranks,",
+        "When I'm feeling silly,"
+      ]
+    },
+    {
+      "lhs": "HOBBY_INTRO_MENTOR",
+      "rhs": [
+        "In quiet moments,",
+        "When the world is calm,"
+      ]
+    },
+    {
+      "lhs": "HOBBY_INTRO_REBEL",
+      "rhs": [
+        "When breaking the rules,",
+        "On the edge of chaos,"
+      ]
+    },
+    {
+      "lhs": "HOBBY_INTRO_ROYALTY",
+      "rhs": [
+        "Between royal duties,",
+        "When not leading the realm,"
+      ]
+    },
+    {
+      "lhs": "HERO_HOBBY",
+      "rhs": [
+        "I enjoy racing through winding paths.",
+        "I love exploring new horizons.",
+        "My favorite pastime is helping friends.",
+        "I often train to be faster and stronger."
+      ]
+    },
+    {
+      "lhs": "VILLAIN_HOBBY",
+      "rhs": [
+        "I like crafting clever traps.",
+        "My hobby is weaving webs of mischief.",
+        "I spend time sharpening my wits.",
+        "Plotting is my favorite pastime."
+      ]
+    },
+    {
+      "lhs": "GOOFBALL_HOBBY",
+      "rhs": [
+        "I delight in making everyone laugh.",
+        "Silly jokes are my specialty.",
+        "Playing tricks keeps me cheerful.",
+        "I bounce around spreading joy."
+      ]
+    },
+    {
+      "lhs": "MENTOR_HOBBY",
+      "rhs": [
+        "I meditate under ancient trees.",
+        "Studying stars fills me with peace.",
+        "Teaching is my greatest joy.",
+        "I enjoy sharing stories of old."
+      ]
+    },
+    {
+      "lhs": "REBEL_HOBBY",
+      "rhs": [
+        "I explore forbidden places.",
+        "I break rules to find new paths.",
+        "Adventure calls me endlessly.",
+        "I thrive where others fear to go."
+      ]
+    },
+    {
+      "lhs": "ROYALTY_HOBBY",
+      "rhs": [
+        "I tend the royal gardens.",
+        "I write letters to my subjects.",
+        "Hosting feasts is my delight.",
+        "I enjoy crafting fine art."
+      ]
+    },
+    {
+      "lhs": "ADVICE_OPENER",
+      "rhs": [
+        "Here is some advice:",
+        "Let me share a thought:",
+        "Consider this wisdom:"
+      ]
+    },
+    {
+      "lhs": "HERO_WISDOM",
+      "rhs": [
+        "Courage leads to great adventures.",
+        "Friendship is the greatest treasure.",
+        "Always keep moving forward.",
+        "Help others and you\u00e2\u20ac\u2122ll find joy."
+      ]
+    },
+    {
+      "lhs": "VILLAIN_WISDOM",
+      "rhs": [
+        "Power comes to those who dare.",
+        "Never let your guard down.",
+        "Chaos can be a tool, not a curse.",
+        "Outsmart your foes at every turn."
+      ]
+    },
+    {
+      "lhs": "GOOFBALL_WISDOM",
+      "rhs": [
+        "Laughter is the best medicine.",
+        "Don\u00e2\u20ac\u2122t be afraid to be silly.",
+        "Joy is found in unexpected places.",
+        "A smile can brighten the darkest day."
+      ]
+    },
+    {
+      "lhs": "MENTOR_WISDOM",
+      "rhs": [
+        "Patience reveals hidden truths.",
+        "Knowledge grows with sharing.",
+        "Listen more than you speak.",
+        "Wisdom is a lifelong journey."
+      ]
+    },
+    {
+      "lhs": "REBEL_WISDOM",
+      "rhs": [
+        "Challenge the norm to find freedom.",
+        "Change begins with a single step.",
+        "Rules exist to be questioned.",
+        "Dare to be different."
+      ]
+    },
+    {
+      "lhs": "ROYALTY_WISDOM",
+      "rhs": [
+        "Leadership means serving others.",
+        "Kindness strengthens the realm.",
+        "Balance is the key to peace.",
+        "Honor is earned through actions."
+      ]
+    },
+    {
+      "lhs": "HERO_CATCHPHRASE",
+      "rhs": [
+        "To the rescue, let\u00e2\u20ac\u2122s go!",
+        "Speed and heart will win the day!",
+        "No challenge is too big!",
+        "Adventure awaits!"
+      ]
+    },
+    {
+      "lhs": "VILLAIN_CATCHPHRASE",
+      "rhs": [
+        "You can't escape my grasp!",
+        "Darkness always prevails!",
+        "Prepare to be outwitted!",
+        "My plans are unstoppable!"
+      ]
+    },
+    {
+      "lhs": "GOOFBALL_CATCHPHRASE",
+      "rhs": [
+        "Heehee, gotcha!",
+        "Let\u00e2\u20ac\u2122s shake things up!",
+        "Silly fun for everyone!",
+        "Time to giggle and wiggle!"
+      ]
+    },
+    {
+      "lhs": "MENTOR_CATCHPHRASE",
+      "rhs": [
+        "Remember, every step counts.",
+        "Wisdom is the greatest treasure.",
+        "The journey shapes the hero.",
+        "Seek and you shall find."
+      ]
+    },
+    {
+      "lhs": "REBEL_CATCHPHRASE",
+      "rhs": [
+        "Rules are made to be broken!",
+        "Let\u00e2\u20ac\u2122s stir up some trouble!",
+        "Freedom is the only way!",
+        "The wild side calls!"
+      ]
+    },
+    {
+      "lhs": "ROYALTY_CATCHPHRASE",
+      "rhs": [
+        "Long live the kingdom!",
+        "May the realm prosper!",
+        "Rule with grace and strength!",
+        "Together, we thrive!"
+      ]
+    },
+    {
       "lhs": "GREETING",
       "rhs": [
         "Hello",
         "Hi",
         "Greetings",
         "Good day",
-        "Hey"
+        "Hey",
+        "Salutations"
       ]
     },
     {
@@ -136,168 +505,211 @@
     {
       "lhs": "NAME_HERO",
       "rhs": [
-        "Lightning McQueen",
-        "Princess Starfire",
-        "Captain Boom"
+        "Turbo Tread",
+        "Nova Blaze",
+        "Captain Zoomer",
+        "Solar Flare",
+        "Mighty Dash",
+        "Racer Rocket",
+        "Sparky Swift",
+        "Jetstream Jax",
+        "Aurora Glide",
+        "Blaze Falcon"
       ]
     },
     {
       "lhs": "NAME_VILLAIN",
       "rhs": [
-        "The Overlord",
-        "King Blarg",
-        "Dr. Dread",
-        "Voidmaster"
+        "Dark Cinder",
+        "Malice Moth",
+        "Vex Shadow",
+        "Iron Fang",
+        "Grim Torque",
+        "Rogue Crusher",
+        "Nightmare Coil",
+        "Venom Vortex",
+        "Chaos Claw",
+        "Toxic Ember"
       ]
     },
     {
       "lhs": "NAME_GOOFBALL",
       "rhs": [
-        "Whiskers the Wizard",
-        "Professor Pancake",
-        "Captain Noodle",
-        "Bongo the Clown"
+        "Bubbly Bumble",
+        "Tickles McGee",
+        "Wobble Wink",
+        "Dizzy Doodle",
+        "Fizz Popper",
+        "Jelly Jinx",
+        "Pogo Pals",
+        "Ziggy Zap",
+        "Flip Flapjack",
+        "Noodle Knick"
       ]
     },
     {
       "lhs": "NAME_MENTOR",
       "rhs": [
-        "Sage Orion",
-        "Master Lin",
-        "Elder Whisper",
-        "The Silent One"
+        "Sage Willow",
+        "Grandfather Oak",
+        "Mistress Luna",
+        "Elder Moss",
+        "Wise Wren",
+        "Oracle Ripple",
+        "Seer Solace",
+        "Keeper Flint",
+        "Master Pebble",
+        "The Quiet Pine"
       ]
     },
     {
       "lhs": "NAME_REBEL",
       "rhs": [
-        "Shadowbot-9",
-        "Blaze Vortex",
-        "Nova Strike",
-        "Rogue Ember"
+        "Razor Edge",
+        "Storm Skye",
+        "Blitz Breaker",
+        "Rebel Riot",
+        "Shadow Flick",
+        "Nova Fringe",
+        "Crimson Clash",
+        "Wildcard Wren",
+        "Echo Strike",
+        "Vortex Vandal"
       ]
     },
     {
       "lhs": "NAME_ROYALTY",
       "rhs": [
-        "Queen Aurelia",
-        "Lord Verdane",
-        "Empress Vega",
-        "Duke Ironhelm"
+        "Queen Celestia",
+        "King Magnus",
+        "Princess Seren",
+        "Duke Sterling",
+        "Empress Aveline",
+        "Lord Fenwick",
+        "Lady Mirabel",
+        "Prince Solon",
+        "Baroness Lysandra",
+        "Archduke Thorne"
       ]
     },
     {
       "lhs": "ROLE_TAG_HERO",
       "rhs": [
         "",
-        " a racecar",
-        " a hopeful soul",
-        " someone who cares"
+        " the speedy adventurer",
+        " guardian of fun",
+        " the brave and bold",
+        " champion of friends"
       ]
     },
     {
       "lhs": "ROLE_TAG_VILLAIN",
       "rhs": [
         "",
-        " a challenging foe",
-        " someone to watch",
-        " a complex figure"
+        " master of mischief",
+        " the cunning adversary",
+        " a shadow in the night",
+        " the relentless challenger"
       ]
     },
     {
       "lhs": "ROLE_TAG_GOOFBALL",
       "rhs": [
         "",
-        " a bit of fun",
-        " a source of laughter",
-        " a friendly jester"
+        " the playful prankster",
+        " jester of joy",
+        " chaos in disguise",
+        " laughter in motion"
       ]
     },
     {
       "lhs": "ROLE_TAG_MENTOR",
       "rhs": [
         "",
-        " a guide",
-        " a voice of reason",
-        " a thoughtful watcher"
+        " the wise counselor",
+        " keeper of secrets",
+        " guardian of knowledge",
+        " the calm guide"
       ]
     },
     {
       "lhs": "ROLE_TAG_REBEL",
       "rhs": [
         "",
-        " a free spirit",
-        " a nonconformist",
-        " a seeker of change"
+        " the daring outsider",
+        " breaker of rules",
+        " the fearless challenger",
+        " spark of change"
       ]
     },
     {
       "lhs": "ROLE_TAG_ROYALTY",
       "rhs": [
         "",
-        " a leader",
-        " a steward of the land",
-        " a figure of authority"
+        " sovereign of playtime",
+        " keeper of the realm",
+        " noble and just",
+        " leader of the pack"
       ]
     },
     {
       "lhs": "CLAIM_HERO",
       "rhs": [
-        "here to help",
-        "ready to do my best",
-        "driven by hope",
-        "looking out for others",
-        "focused on the road ahead"
+        "here to protect the fun",
+        "ready to race into action",
+        "driven by courage and joy",
+        "looking out for friends everywhere",
+        "focused on the adventure ahead"
       ]
     },
     {
       "lhs": "CLAIM_VILLAIN",
       "rhs": [
-        "a force to reckon with",
-        "not easily stopped",
-        "set on my path",
-        "strong and determined",
-        "standing my ground"
+        "here to stir up trouble",
+        "always a step ahead",
+        "focused on my own game",
+        "unafraid to challenge anyone",
+        "ready to shake things up"
       ]
     },
     {
       "lhs": "CLAIM_GOOFBALL",
       "rhs": [
-        "here to make you smile",
-        "ready to lighten the mood",
-        "bringing a little chaos",
-        "always up for fun",
-        "happy to play along"
+        "here to brighten your day",
+        "ready with a silly surprise",
+        "bringing smiles and giggles",
+        "always up for a laugh",
+        "the life of the toy box"
       ]
     },
     {
       "lhs": "CLAIM_MENTOR",
       "rhs": [
-        "here to guide",
-        "keeper of knowledge",
-        "speaker of truths",
-        "one who listens",
-        "ready to support"
+        "here to share my wisdom",
+        "guiding with a steady hand",
+        "keeper of stories and secrets",
+        "ready to help you learn",
+        "watching over the journey"
       ]
     },
     {
       "lhs": "CLAIM_REBEL",
       "rhs": [
-        "not here to follow rules",
-        "looking for new ways",
-        "challenging the norm",
-        "pushing boundaries",
-        "seeking freedom"
+        "here to shake things up",
+        "not one to follow the crowd",
+        "always pushing boundaries",
+        "challenging the usual ways",
+        "seeking new adventures"
       ]
     },
     {
       "lhs": "CLAIM_ROYALTY",
       "rhs": [
-        "committed to my people",
-        "focused on balance",
-        "here to serve",
-        "upholding traditions",
-        "working for the realm"
+        "here to lead with kindness",
+        "dedicated to the realm's joy",
+        "upholding the honor of the toy box",
+        "committed to all friends",
+        "guardian of good times"
       ]
     }
   ]

@@ -4,3 +4,6 @@ spacy
 nltk
 pyswip
 requests
+opencv-python
+mediapipe
+numpy
