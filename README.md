@@ -98,11 +98,11 @@ To get a local copy up and running:
 ```bash
 git clone https://github.com/brasondo/toylogue-grammar-engine.git
 cd toylogue-grammar-engine
-python -m venv310 venv
+python -m venv venv
 # On Windows:
 venv\Scripts\activate
 # On macOS/Linux:
-source venv310/bin/activate
+source venv/bin/activate
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
@@ -146,6 +146,25 @@ Sample Output:
 Raw: Hello — I'm Voidmaster and ruler of all you see.  
 Ollama: (cackling) "Yes! I am VOIDMASTER, ruler of all you see and destroyer of hope!"
 
+### Symbolic Pose-to-Story Demo (toyQuy Integration)
+
+You can now control narrative events through **real body gestures**, using MediaPipe pose estimation to symbolically trigger story logic.
+
+#### Pose Estimation Demo Instructions
+
+1. Launch the pose detection demo:
+    ```bash
+    python -m demo.pose_demo
+    ```
+2. Use these gestures:
+    - Raise both arms → `"CAST_SPELL"`
+    - Cross arms across chest → `"DEFENSIVE_STANCE"`
+    - Rest arms at sides → `"NEUTRAL"`
+
+3. Symbolic events are printed in the terminal and ready to integrate into character-driven responses.
+
+> This module powers the **gesture → story mapping** planned in toyQuy MVP 2.5.
+
 ## Live App Interface
 
 Toylogue also includes a browser-based interface where users can:
@@ -179,6 +198,8 @@ python app.py
 - [x] Interactive web interface with dark mode and animated typing
 - [x] Character avatars and voice synthesis per role (SpeechSynthesis API)
 - [x] Follow-up prompt support for branching dialogue
+- [x] Real-time symbolic gesture recognition via pose tracking (MediaPipe)
+- [ ] Connect physical gestures to character-specific dialogue via grammar engine
 - [ ] Persistent toy personality memory across turns
 - [ ] Context-sensitive response planning (mood, setting, tone shift)
 - [ ] Grammar authoring UI for non-technical users
