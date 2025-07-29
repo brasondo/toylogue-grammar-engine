@@ -90,6 +90,7 @@ To get a local copy up and running:
 * pip (Python package manager)  
 * [SWI-Prolog](https://www.swi-prolog.org/) (required for logic validation)  
 * [Ollama](https://ollama.com/) (optional, for LLM-based enhancement)
+* Webcam
 
 > Python dependencies such as `pyyaml`, `spacy`, `nltk`, and `pyswip` are installed via `requirements.txt`.
 
@@ -156,10 +157,12 @@ You can now control narrative events through **real body gestures**, using Media
     ```bash
     python -m demo.pose_demo
     ```
+
 2. Use these gestures:
     - Raise both arms → `"CAST_SPELL"`
     - Cross arms across chest → `"DEFENSIVE_STANCE"`
     - Rest arms at sides → `"NEUTRAL"`
+     - Tip: Stand about 2–3 feet (0.5–1m) from your webcam, with your upper body fully visible in the frame for best detection accuracy.
 
 3. Symbolic events are printed in the terminal and ready to integrate into character-driven responses.
 
